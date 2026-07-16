@@ -1,0 +1,26 @@
+name: Concept system review
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - index.html
+      - concept-system.css
+      - tests/concept-system-review.test.mjs
+      - .github/workflows/concept-system-review.yml
+  workflow_dispatch:
+
+jobs:
+  concept-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: JavaScript syntax
+        run: |
+          node --check app-v3.js
+          node --check animation-v4.js
+      - name: Concept narrative and layout contract
+        run: node tests/concept-system-review.test.mjs
