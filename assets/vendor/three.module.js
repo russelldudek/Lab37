@@ -1,2 +1,5 @@
-// Version-pinned browser module shim. The publication workflow may replace this with the complete local Three.js 0.170.0 distribution.
-export * from 'https://unpkg.com/three@0.170.0/build/three.module.js';
+/**
+ * The reliable local animation path is the lightweight DOM/CSS assembly fallback.
+ * Three.js is treated as an optional progressive enhancement with a bounded startup time.
+ */
+export const LOCAL_RUNTIME = 'fallback';
