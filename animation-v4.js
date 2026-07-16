@@ -5,6 +5,7 @@ export const FLIGHT_MS = 1150;
 export const DROP_WINDOW_MS = 3200;
 export const PHASES = { fill: 5000, validate: 1200, release: 600, exchange: 2000 };
 export const TOTAL_MS = 8800;
+export const RUNTIME_TIMEOUT_MS = 2500;
 
 export function clamp01(value) {
   return Math.max(0, Math.min(1, value));
@@ -65,97 +66,19 @@ export function phaseLabel(state, schedule = particleSchedule()) {
   }[state.phase];
 }
 
+function timeout(ms) {
+  return new Promise((_, reject) => {
+    window.setTimeout(() => reject(new Error(`Three.js runtime exceeded ${ms}ms startup budget`)), ms);
+  });
+}
+
 async function loadThree() {
-  const sources = ['./assets/vendor/three.module.js', 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js'];
-  let lastError;
-  for (const source of sources) {
-    try {
-      return await import(source);
-    } catch (error) {
-      lastError = error;
-    }
-  }
-  throw lastError || new Error('Three.js unavailable');
-}
-
-function roundedShape(THREE, width, depth, radius) {
-  const shape = new THREE.Shape();
-  const x = -width / 2;
-  const y = -depth / 2;
-  shape.moveTo(x + radius, y);
-  shape.lineTo(x + width - radius, y);
-  shape.quadraticCurveTo(x + width, y, x + width, y + radius);
-  shape.lineTo(x + width, y + depth - radius);
-  shape.quadraticCurveTo(x + width, y + depth, x + width - radius, y + depth);
-  shape.lineTo(x + radius, y + depth);
-  shape.quadraticCurveTo(x, y + depth, x, y + depth - radius);
-  shape.lineTo(x, y + radius);
-  shape.quadraticCurveTo(x, y, x + radius, y);
-  return shape;
-}
-
-function createGate(THREE, index) {
-  const width = 6.9 - index * 0.16;
-  const depth = 4.7 - index * 0.12;
-  const holeRadius = 1.06 - index * 0.025;
-  const shape = roundedShape(THREE, width, depth, 0.36);
-  const hole = new THREE.Path();
-  hole.absellipse(0, 0, holeRadius, holeRadius, 0, Math.PI * 2, true);
-  shape.holes.push(hole);
-  const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.075, bevelEnabled: false, curveSegments: 40 });
-  geometry.center();
-  geometry.rotateX(-Math.PI / 2);
-  const group = new THREE.Group();
-  group.add(new THREE.Mesh(geometry, new THREE.MeshPhysicalMaterial({ color: COLORS[index], transparent: true, opacity: 0.2, roughness: 0.28, metalness: 0.52, transmission: 0.1, side: THREE.DoubleSide })));
-  group.add(new THREE.LineSegments(new THREE.EdgesGeometry(geometry, 20), new THREE.LineBasicMaterial({ color: COLORS[index], transparent: true, opacity: 0.92 })));
-  const clearRing = new THREE.Mesh(new THREE.TorusGeometry(holeRadius * 1.12, 0.048, 12, 80), new THREE.MeshBasicMaterial({ color: COLORS[index], transparent: true, opacity: 0 }));
-  clearRing.rotation.x = Math.PI / 2;
-  clearRing.position.y = 0.07;
-  group.add(clearRing);
-  group.userData = { clearRing, baseY: 2.95 - index * 1.08, targetX: 0, targetZ: 0, targetRot: 0 };
-  group.position.y = group.userData.baseY;
-  return group;
-}
-
-function createBowl(THREE) {
-  const radius = 2.42;
-  const group = new THREE.Group();
-  const profile = [
-    new THREE.Vector2(0.22 * radius, -0.5 * radius),
-    new THREE.Vector2(0.58 * radius, -0.49 * radius),
-    new THREE.Vector2(0.82 * radius, -0.27 * radius),
-    new THREE.Vector2(0.96 * radius, 0.1 * radius),
-    new THREE.Vector2(radius, 0.38 * radius),
-    new THREE.Vector2(0.955 * radius, 0.38 * radius),
-    new THREE.Vector2(0.91 * radius, 0.11 * radius),
-    new THREE.Vector2(0.77 * radius, -0.2 * radius),
-    new THREE.Vector2(0.54 * radius, -0.42 * radius),
-    new THREE.Vector2(0.24 * radius, -0.43 * radius),
-  ];
-  const geometry = new THREE.LatheGeometry(profile, 96);
-  geometry.computeVertexNormals();
-  group.add(new THREE.Mesh(geometry, new THREE.MeshPhysicalMaterial({ color: 0xf4f4f1, roughness: 0.34, metalness: 0.04, transparent: true, opacity: 0.96, clearcoat: 0.38, side: THREE.DoubleSide })));
-  const rim = new THREE.Mesh(new THREE.TorusGeometry(radius * 0.978, 0.07, 16, 112), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.25, metalness: 0.08 }));
-  rim.rotation.x = Math.PI / 2;
-  rim.position.y = 0.38 * radius;
-  group.add(rim);
-  const settled = [];
-  for (let index = 0; index < 120; index += 1) {
-    const level = index / 119;
-    const angle = index * 2.399963229728653;
-    const radial = Math.sqrt((index % 40) / 39) * radius * (0.4 + level * 0.36);
-    const piece = new THREE.Mesh(new THREE.IcosahedronGeometry(0.065 + (index % 5) * 0.008, 1), new THREE.MeshStandardMaterial({ color: COLORS[index % 5], roughness: 0.72, metalness: 0.02 }));
-    piece.position.set(Math.cos(angle) * radial, -0.31 * radius + level * 0.68 * radius, Math.sin(angle) * radial * 0.68);
-    piece.rotation.set(index * 0.13, index * 0.17, index * 0.11);
-    piece.visible = false;
-    group.add(piece);
-    settled.push(piece);
-  }
-  const halo = new THREE.Mesh(new THREE.TorusGeometry(radius * 1.12, 0.045, 12, 96), new THREE.MeshBasicMaterial({ color: 0xcaff38, transparent: true, opacity: 0 }));
-  halo.rotation.x = Math.PI / 2;
-  group.add(halo);
-  group.userData = { settled, halo };
-  return group;
+  const runtime = await Promise.race([
+    import('https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js'),
+    timeout(RUNTIME_TIMEOUT_MS),
+  ]);
+  if (!runtime?.WebGLRenderer) throw new Error('Three.js runtime is incomplete');
+  return runtime;
 }
 
 function updatePanel(state, elapsed, schedule) {
@@ -181,14 +104,20 @@ function installFallback(stage, schedule) {
 function startFallback(stage, reduceMotion, schedule) {
   const fallback = installFallback(stage, schedule);
   stage.classList.add('is-fallback');
+  stage.dataset.runtimeState = 'fallback-active';
   const bowls = [fallback.querySelector('.v3-bowl-a'), fallback.querySelector('.v3-bowl-b')];
   const particles = [...fallback.querySelectorAll('.v3-stream b')];
   const gates = [...fallback.querySelectorAll('.v3-gates i')];
   const belt = fallback.querySelector('.v3-belt');
   let cycleStart = performance.now();
-  let frame;
-  document.querySelector('#replay-assembly')?.addEventListener('click', () => { cycleStart = performance.now(); });
+  let frame = 0;
+  let stopped = false;
+
+  const replay = () => { cycleStart = performance.now(); };
+  document.querySelector('#replay-assembly')?.addEventListener('click', replay);
+
   const render = now => {
+    if (stopped) return;
     const elapsed = reduceMotion ? PHASES.fill + PHASES.validate * 0.8 : now - cycleStart;
     const state = cycleState(elapsed);
     const activeIndex = state.cycleIndex % 2;
@@ -212,44 +141,149 @@ function startFallback(stage, reduceMotion, schedule) {
     stage.dataset.conveyorMoving = String(state.phase === 'exchange');
     if (!reduceMotion) frame = requestAnimationFrame(render);
   };
+
   render(performance.now());
-  return () => cancelAnimationFrame(frame);
+  return () => {
+    stopped = true;
+    cancelAnimationFrame(frame);
+    document.querySelector('#replay-assembly')?.removeEventListener('click', replay);
+  };
+}
+
+function roundedShape(THREE, width, depth, radius) {
+  const shape = new THREE.Shape();
+  const x = -width / 2;
+  const y = -depth / 2;
+  shape.moveTo(x + radius, y);
+  shape.lineTo(x + width - radius, y);
+  shape.quadraticCurveTo(x + width, y, x + width, y + radius);
+  shape.lineTo(x + width, y + depth - radius);
+  shape.quadraticCurveTo(x + width, y + depth, x + width - radius, y + depth);
+  shape.lineTo(x + radius, y + depth);
+  shape.quadraticCurveTo(x, y + depth, x, y + depth - radius);
+  shape.lineTo(x, y + radius);
+  shape.quadraticCurveTo(x, y, x + radius, y);
+  return shape;
+}
+
+function createParticleResources(THREE) {
+  return {
+    geometries: Array.from({ length: 6 }, (_, index) => new THREE.IcosahedronGeometry(0.06 + index * 0.006, 1)),
+    materials: COLORS.map(color => new THREE.MeshStandardMaterial({ color, roughness: 0.7, metalness: 0.02 })),
+  };
+}
+
+function createParticle(THREE, index, resources) {
+  return new THREE.Mesh(resources.geometries[index % resources.geometries.length], resources.materials[index % resources.materials.length]);
+}
+
+function createGate(THREE, index) {
+  const width = 6.9 - index * 0.16;
+  const depth = 4.7 - index * 0.12;
+  const holeRadius = 1.06 - index * 0.025;
+  const shape = roundedShape(THREE, width, depth, 0.36);
+  const hole = new THREE.Path();
+  hole.absellipse(0, 0, holeRadius, holeRadius, 0, Math.PI * 2, true);
+  shape.holes.push(hole);
+  const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.075, bevelEnabled: false, curveSegments: 20 });
+  geometry.center();
+  geometry.rotateX(-Math.PI / 2);
+  const group = new THREE.Group();
+  group.add(new THREE.Mesh(geometry, new THREE.MeshPhysicalMaterial({ color: COLORS[index], transparent: true, opacity: 0.2, roughness: 0.3, metalness: 0.45, transmission: 0.06, side: THREE.DoubleSide })));
+  group.add(new THREE.LineSegments(new THREE.EdgesGeometry(geometry, 20), new THREE.LineBasicMaterial({ color: COLORS[index], transparent: true, opacity: 0.92 })));
+  const clearRing = new THREE.Mesh(new THREE.TorusGeometry(holeRadius * 1.12, 0.048, 10, 48), new THREE.MeshBasicMaterial({ color: COLORS[index], transparent: true, opacity: 0 }));
+  clearRing.rotation.x = Math.PI / 2;
+  clearRing.position.y = 0.07;
+  group.add(clearRing);
+  group.userData = { clearRing, baseY: 2.95 - index * 1.08, targetX: 0, targetZ: 0, targetRot: 0 };
+  group.position.y = group.userData.baseY;
+  return group;
+}
+
+function createBowl(THREE, resources) {
+  const radius = 2.42;
+  const group = new THREE.Group();
+  const profile = [
+    new THREE.Vector2(0.22 * radius, -0.5 * radius),
+    new THREE.Vector2(0.58 * radius, -0.49 * radius),
+    new THREE.Vector2(0.82 * radius, -0.27 * radius),
+    new THREE.Vector2(0.96 * radius, 0.1 * radius),
+    new THREE.Vector2(radius, 0.38 * radius),
+    new THREE.Vector2(0.955 * radius, 0.38 * radius),
+    new THREE.Vector2(0.91 * radius, 0.11 * radius),
+    new THREE.Vector2(0.77 * radius, -0.2 * radius),
+    new THREE.Vector2(0.54 * radius, -0.42 * radius),
+    new THREE.Vector2(0.24 * radius, -0.43 * radius),
+  ];
+  const geometry = new THREE.LatheGeometry(profile, 64);
+  geometry.computeVertexNormals();
+  group.add(new THREE.Mesh(geometry, new THREE.MeshPhysicalMaterial({ color: 0xf4f4f1, roughness: 0.4, metalness: 0.03, transparent: true, opacity: 0.985, clearcoat: 0.22, side: THREE.DoubleSide })));
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(radius * 0.978, 0.07, 12, 72), new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.28, metalness: 0.06 }));
+  rim.rotation.x = Math.PI / 2;
+  rim.position.y = 0.38 * radius;
+  group.add(rim);
+  const settled = [];
+  for (let index = 0; index < 90; index += 1) {
+    const level = index / 89;
+    const angle = index * 2.399963229728653;
+    const radial = Math.sqrt((index % 30) / 29) * radius * (0.38 - level * 0.08);
+    const piece = createParticle(THREE, index, resources);
+    piece.position.set(Math.cos(angle) * radial, -0.32 * radius + level * 0.57 * radius, Math.sin(angle) * radial * 0.62);
+    piece.rotation.set(index * 0.13, index * 0.17, index * 0.11);
+    piece.visible = false;
+    group.add(piece);
+    settled.push(piece);
+  }
+  const halo = new THREE.Mesh(new THREE.TorusGeometry(radius * 1.12, 0.045, 10, 64), new THREE.MeshBasicMaterial({ color: 0xcaff38, transparent: true, opacity: 0 }));
+  halo.rotation.x = Math.PI / 2;
+  group.add(halo);
+  group.userData = { settled, halo };
+  return group;
 }
 
 export async function initBowlAssembly({ canvas, reduceMotion = false }) {
   const stage = canvas.closest('.hero-stage');
   if (!stage) return;
   const schedule = particleSchedule();
+  const stopFallback = startFallback(stage, reduceMotion, schedule);
+  if (reduceMotion) return;
+
   let THREE;
   try {
     THREE = await loadThree();
   } catch (error) {
-    startFallback(stage, reduceMotion, schedule);
-    throw error;
+    stage.dataset.runtimeState = 'fallback-only';
+    console.info('Using the local bowl-animation fallback:', error.message);
+    return;
   }
+
   let renderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'default', failIfMajorPerformanceCaveat: false });
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance', failIfMajorPerformanceCaveat: false });
   } catch (error) {
-    startFallback(stage, reduceMotion, schedule);
-    throw error;
+    stage.dataset.runtimeState = 'fallback-only';
+    console.info('WebGL unavailable; keeping the bowl-animation fallback:', error.message);
+    return;
   }
+
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.setClearColor(0x000000, 0);
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x111111, 2.1));
-  const key = new THREE.DirectionalLight(0xffffff, 2.5);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x111111, 2.0));
+  const key = new THREE.DirectionalLight(0xffffff, 2.3);
   key.position.set(6, 10, 8);
   scene.add(key);
-  const lime = new THREE.PointLight(0xcaff38, 13, 20);
+  const lime = new THREE.PointLight(0xcaff38, 11, 20);
   lime.position.set(-4, 2, 5);
   scene.add(lime);
-  const blue = new THREE.PointLight(0x72d7ff, 7, 18);
+  const blue = new THREE.PointLight(0x72d7ff, 6, 18);
   blue.position.set(4, 0, 3);
   scene.add(blue);
+
   const world = new THREE.Group();
   scene.add(world);
+  const resources = createParticleResources(THREE);
   const beltMarkers = [];
   const belt = new THREE.Mesh(new THREE.BoxGeometry(16, 0.18, 5.4), new THREE.MeshStandardMaterial({ color: 0x101010, roughness: 0.62, metalness: 0.45 }));
   belt.position.y = -3.48;
@@ -259,29 +293,34 @@ export async function initBowlAssembly({ canvas, reduceMotion = false }) {
     rail.position.set(0, -3.22, z);
     world.add(rail);
   });
+  const markerGeometry = new THREE.BoxGeometry(0.07, 0.025, 5.05);
+  const markerMaterial = new THREE.MeshBasicMaterial({ color: 0x454745, transparent: true, opacity: 0.72 });
   for (let index = -8; index <= 8; index += 1) {
-    const marker = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.025, 5.05), new THREE.MeshBasicMaterial({ color: 0x454745, transparent: true, opacity: 0.72 }));
+    const marker = new THREE.Mesh(markerGeometry, markerMaterial);
     marker.position.set(index, -3.36, 0);
     world.add(marker);
     beltMarkers.push(marker);
   }
+
   const gates = COLORS.map((_, index) => {
     const gate = createGate(THREE, index);
     world.add(gate);
     return gate;
   });
-  const bowls = [createBowl(THREE), createBowl(THREE)];
+  const bowls = [createBowl(THREE, resources), createBowl(THREE, resources)];
   bowls[0].position.set(0, -2.42, 0);
   bowls[1].position.set(-8.2, -2.42, 0);
   world.add(...bowls);
   const falling = schedule.map(item => {
-    const piece = new THREE.Mesh(new THREE.IcosahedronGeometry(0.065 + (item.index % 6) * 0.008, 1), new THREE.MeshStandardMaterial({ color: COLORS[item.index % 5], roughness: 0.68, metalness: 0.02 }));
+    const piece = createParticle(THREE, item.index, resources);
     piece.userData = { ...item, angle: item.index * 2.399963229728653, radius: 0.18 + (item.index % 9) * 0.055 };
     world.add(piece);
     return piece;
   });
+
   let targetValues = { throughput: 5, variability: 3, operator: 2, service: 2 };
-  window.addEventListener('lab37:contractchange', event => { targetValues = event.detail.values; });
+  const onContractChange = event => { targetValues = event.detail.values; };
+  window.addEventListener('lab37:contractchange', onContractChange);
   const applyPressure = () => {
     const n = value => (value - 3) / 2;
     const offsets = [
@@ -297,11 +336,12 @@ export async function initBowlAssembly({ canvas, reduceMotion = false }) {
       gate.userData.targetRot = offsets[index][2];
     });
   };
+
   const resize = () => {
     const rect = stage.getBoundingClientRect();
     const width = Math.max(1, Math.round(rect.width));
     const height = Math.max(1, Math.round(rect.height));
-    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, width > 900 ? 1.35 : 1.6));
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, width > 900 ? 1.15 : 1.35));
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.fov = width < 560 ? 42 : 35;
@@ -310,15 +350,19 @@ export async function initBowlAssembly({ canvas, reduceMotion = false }) {
     camera.updateProjectionMatrix();
   };
   resize();
-  const observer = new ResizeObserver(resize);
-  observer.observe(stage);
-  stage.classList.add('is-webgl-ready');
-  stage.classList.remove('is-fallback');
+  const resizeObserver = new ResizeObserver(resize);
+  resizeObserver.observe(stage);
+
   let cycleStart = performance.now();
-  let frame;
-  document.querySelector('#replay-assembly')?.addEventListener('click', () => { cycleStart = performance.now(); });
+  let frame = 0;
+  let stageVisible = true;
+  const replay = () => { cycleStart = performance.now(); };
+  document.querySelector('#replay-assembly')?.addEventListener('click', replay);
+
   const render = now => {
-    const elapsed = reduceMotion ? PHASES.fill + PHASES.validate * 0.8 : now - cycleStart;
+    frame = 0;
+    if (!stageVisible || document.hidden) return;
+    const elapsed = now - cycleStart;
     const state = cycleState(elapsed);
     const activeIndex = state.cycleIndex % 2;
     const incomingIndex = (activeIndex + 1) % 2;
@@ -369,12 +413,45 @@ export async function initBowlAssembly({ canvas, reduceMotion = false }) {
     stage.dataset.cyclePhase = state.phase;
     stage.dataset.conveyorMoving = String(state.phase === 'exchange');
     renderer.render(scene, camera);
-    if (!reduceMotion) frame = requestAnimationFrame(render);
+    frame = requestAnimationFrame(render);
   };
-  render(performance.now());
+
+  const resumeLoop = () => {
+    if (stageVisible && !document.hidden && !frame) frame = requestAnimationFrame(render);
+  };
+  const intersectionObserver = new IntersectionObserver(entries => {
+    stageVisible = entries[0]?.isIntersecting ?? true;
+    if (!stageVisible && frame) {
+      cancelAnimationFrame(frame);
+      frame = 0;
+    }
+    resumeLoop();
+  }, { rootMargin: '120px' });
+  intersectionObserver.observe(stage);
+  const onVisibility = () => {
+    if (document.hidden && frame) {
+      cancelAnimationFrame(frame);
+      frame = 0;
+    }
+    resumeLoop();
+  };
+  document.addEventListener('visibilitychange', onVisibility);
+
+  renderer.compile(scene, camera);
+  renderer.render(scene, camera);
+  stage.classList.add('is-webgl-ready');
+  stage.classList.remove('is-fallback');
+  stage.dataset.runtimeState = 'webgl-ready';
+  stopFallback?.();
+  frame = requestAnimationFrame(render);
+
   window.addEventListener('beforeunload', () => {
     cancelAnimationFrame(frame);
-    observer.disconnect();
+    resizeObserver.disconnect();
+    intersectionObserver.disconnect();
+    document.removeEventListener('visibilitychange', onVisibility);
+    window.removeEventListener('lab37:contractchange', onContractChange);
+    document.querySelector('#replay-assembly')?.removeEventListener('click', replay);
     renderer.dispose();
   }, { once: true });
 }
