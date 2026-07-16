@@ -8,6 +8,7 @@ on:
       - resume.html
       - cover-letter.html
       - styles.css
+      - document-revision.css
       - brand-tokens.css
       - scripts/render-documents.mjs
       - .github/workflows/document-review.yml
@@ -56,7 +57,7 @@ jobs:
           test "$(pdfinfo docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf | awk '/^Pages:/ {print $2}')" = "1"
           pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf - | grep -F "Prime Now launch team with Whole Foods"
           pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf - | grep -F "Food Safety Management certification"
-          pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf - | grep -F "How I Would Contribute"
+          pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf - | grep -Fi "How I Would Contribute"
           pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf - | grep -F "Prime Now launch team with Whole Foods"
           pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf - | grep -F "Food Safety Management certification"
 
