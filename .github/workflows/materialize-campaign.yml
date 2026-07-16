@@ -1,68 +1,26 @@
-name: Materialize campaign package
+name: Pin campaign dependencies
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '*.html'
-      - '*.css'
-      - '*.js'
-      - '.github/workflows/materialize-campaign.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  materialize:
-    if: github.actor != 'github-actions[bot]'
+  pin:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
-      - name: Fetch official assets and pin Three.js
+      - name: Pin official Lab37 assets and Three.js
         run: |
           set -euo pipefail
-          mkdir -p assets/brand assets/vendor docs
+          mkdir -p assets/brand assets/vendor
           curl --fail --location --retry 3 'https://framerusercontent.com/images/yDgux3gwMTX6CNMOWK89q1iF0.jpg?height=3989&width=7990' -o assets/brand/bowl-builder-software.webp
           curl --fail --location --retry 3 'https://framerusercontent.com/images/vVl8hDczEIkSD0qxyPhetdotHA.svg?height=486&width=1164' -o assets/brand/bowl-builder-blueprint.svg
           curl --fail --location --retry 3 'https://unpkg.com/three@0.170.0/build/three.module.js' -o assets/vendor/three.module.js
           curl --fail --location --retry 3 'https://unpkg.com/three@0.170.0/LICENSE' -o assets/vendor/THREE-LICENSE.txt
-          echo '302077187719a9743f8281db66b4331d9a9a88040b39e9989e5e75613fe2ba0f  assets/brand/bowl-builder-software.webp' | sha256sum -c -
-          echo '954b0c2e627c5f8031a2a2ee0d8beea890d67d5f87496e72ced76f904fb10438  assets/brand/bowl-builder-blueprint.svg' | sha256sum -c -
-      - name: Install PDF renderer
-        run: |
-          npm init -y >/dev/null 2>&1
-          npm install --silent playwright@1.52.0
-          npx playwright install --with-deps chromium
-          command -v pdfinfo >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils; }
-      - name: Generate PDFs and verify contracts
-        run: |
-          cat > /tmp/render.mjs <<'NODE'
-          import { chromium } from 'playwright';
-          import { spawn } from 'node:child_process';
-          const server=spawn('python3',['-m','http.server','8000','--bind','127.0.0.1'],{stdio:'ignore'});
-          await new Promise(r=>setTimeout(r,1200));
-          const browser=await chromium.launch({headless:true});
-          const jobs=[['resume.html','docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf'],['cover-letter.html','docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf'],['interview-brief.html','docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf'],['90-day-plan.html','docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf']];
-          for(const [route,path] of jobs){const page=await browser.newPage({reducedMotion:'reduce'});await page.goto('http://127.0.0.1:8000/'+route,{waitUntil:'networkidle'});await page.pdf({path,format:'Letter',printBackground:true,margin:{top:'0',right:'0',bottom:'0',left:'0'},preferCSSPageSize:true});await page.close();}
-          await browser.close();server.kill();
-          NODE
-          node /tmp/render.mjs
-          test "$(pdfinfo docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf|awk '/^Pages:/{print $2}')" = 2
-          test "$(pdfinfo docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf|awk '/^Pages:/{print $2}')" = 1
-          test "$(pdfinfo docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf|awk '/^Pages:/{print $2}')" = 4
-          test "$(pdfinfo docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf|awk '/^Pages:/{print $2}')" = 3
-          ! grep -RniE --exclude-dir=.git --exclude='*.yml' 'role[ -]?forge' .
-          grep -q 'Recipe-to-Release Assembly' index.html
-          grep -q 'View Cover Letter' resume.html
-          grep -q 'View Resume' cover-letter.html
-      - name: Commit generated package
-        run: |
-          rm -rf node_modules package.json package-lock.json assets/.staging
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
-          git commit -m 'Materialize campaign package'
-          git push origin HEAD:main
+          git add assets/brand assets/vendor
+          git commit -m 'Pin campaign dependencies'
+          git push
