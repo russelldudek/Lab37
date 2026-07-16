@@ -1,0 +1,31 @@
+name: Hero regression
+
+on:
+  push:
+    branches:
+      - main
+      - fix/hero-conveyor-product-layout-v4
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  hero-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check app-v3.js
+          node --check animation-v3.js
+          node --check animation-v4.js
+      - name: Timing contract
+        run: node tests/hero-timing.test.mjs
+      - name: Static site contract
+        run: node tests/site-static.test.mjs

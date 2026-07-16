@@ -7,6 +7,7 @@
   <title>Russell Dudek | Lab37 Robotics Product Manager Candidate Vision</title>
   <link rel="stylesheet" href="brand-tokens.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="desktop-v3.css">
 </head>
 <body class="site-body">
 <header class="site-header">
@@ -25,9 +26,9 @@
     <div class="hero-stage" aria-label="Animated Recipe-to-Release Assembly">
       <canvas id="assembly-canvas" aria-hidden="true"></canvas>
       <div class="stage-labels" aria-hidden="true">
-        <div class="stage-label"><i></i><span>Food behavior</span></div><div class="stage-label"><i></i><span>Mechanics</span></div><div class="stage-label"><i></i><span>Order truth</span></div><div class="stage-label"><i></i><span>Operator flow</span></div><div class="stage-label"><i></i><span>Economics</span></div>
+        <div class="stage-label" data-layer="food"><i></i><span>Food behavior</span></div><div class="stage-label" data-layer="mechanics"><i></i><span>Mechanics</span></div><div class="stage-label" data-layer="software"><i></i><span>Order truth</span></div><div class="stage-label" data-layer="operator"><i></i><span>Operator flow</span></div><div class="stage-label" data-layer="economics"><i></i><span>Economics</span></div>
       </div>
-      <p class="stage-caption"><strong>The Recipe-to-Release Assembly</strong>Five contract gates stay visible; a bowl advances only when every gate clears its acceptance conditions.</p>
+      <p class="stage-caption"><strong>The Recipe-to-Release Assembly</strong>Ingredients arrive, the bowl fills only on impact, five product gates validate the release, and the conveyor exchanges the completed bowl for a fresh one.</p>
     </div>
   </section>
 
@@ -75,7 +76,7 @@
 
   <section class="section pilot-section">
     <div class="section-number">05 · Pilots as product instruments</div><h2>A pilot should answer the next roadmap decision.</h2>
-    <div class="blueprint-shell"><img src="assets/brand/bowl-builder-blueprint.svg" alt="Official Lab37 Bowl Builder technical blueprint"><ol><li><b>Define the decision</b><span>Name the roadmap, release, recipe, support, or commercial decision.</span></li><li><b>Establish the baseline</b><span>Record context, units, assumptions, and acceptance thresholds.</span></li><li><b>Instrument the whole system</b><span>Connect bowl output to machine state, software, operator, service, and economics.</span></li><li><b>Review exceptions first</b><span>Inspect modifications, edge ingredients, interventions, recovery, and support burden.</span></li><li><b>Convert evidence to ownership</b><span>Close with a requirement, roadmap action, operating standard, or next experiment.</span></li></ol></div>
+    <div class="blueprint-shell"><img src="assets/brand/bowl-builder-blueprint.svg" alt="Official Lab37 Bowl Builder technical blueprint"><ol><li><span class="pilot-number" aria-hidden="true">01</span><b>Define the decision</b><span>Name the roadmap, release, recipe, support, or commercial decision.</span></li><li><span class="pilot-number" aria-hidden="true">02</span><b>Establish the baseline</b><span>Record context, units, assumptions, and acceptance thresholds.</span></li><li><span class="pilot-number" aria-hidden="true">03</span><b>Instrument the whole system</b><span>Connect bowl output to machine state, software, operator, service, and economics.</span></li><li><span class="pilot-number" aria-hidden="true">04</span><b>Review exceptions first</b><span>Inspect modifications, edge ingredients, interventions, recovery, and support burden.</span></li><li><span class="pilot-number" aria-hidden="true">05</span><b>Convert evidence to ownership</b><span>Close with a requirement, roadmap action, operating standard, or next experiment.</span></li></ol></div>
   </section>
 
   <section class="section evidence-section" id="evidence">
@@ -93,6 +94,6 @@
   <section class="section materials-section" id="materials"><div class="section-number">09 · Application and interview materials</div><h2>One thesis, different working surfaces.</h2><div class="materials-grid"><a href="resume.html"><span>2 pages</span><strong>Role-aligned resume</strong></a><a href="cover-letter.html"><span>1 page</span><strong>Cover letter</strong></a><a href="interview-brief.html"><span>4 pages</span><strong>Interview thesis brief</strong></a><a href="90-day-plan.html"><span>3 pages</span><strong>First 90 days</strong></a></div><div class="contact-bar"><b>Russell Dudek</b><span>Pittsburgh, Pennsylvania</span><a href="tel:+14122878640">412.287.8640</a><a href="mailto:russelldudek@gmail.com">russelldudek@gmail.com</a><a href="https://www.linkedin.com/in/russelldudek">linkedin.com/in/russelldudek</a></div></section>
 </main>
 <footer class="site-footer"><span>Independent candidate work by Russell Dudek. Not an official Lab37 publication or endorsement.</span><span><a href="https://www.lab37.us/">lab37.us</a> · <a href="https://job-boards.greenhouse.io/lab37/jobs/8620044002?gh_src=H6asVO">Job posting</a></span></footer>
-<script type="module" src="app.js"></script>
+<script type="module" src="app-v3.js"></script>
 </body>
 </html>
