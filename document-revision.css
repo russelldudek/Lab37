@@ -1,0 +1,20 @@
+.resume-body .doc-body{padding-top:15px}
+.resume-body .resume-summary{gap:22px;padding:15px 0 17px}
+.resume-body .resume-summary h1{font-size:24.5pt;line-height:.96}
+.resume-body .resume-summary p{font-size:8.55pt;line-height:1.46}
+.resume-body .doc-section{margin-top:15px}
+.resume-body .proof-cell{padding:9px 10px}
+.resume-body .proof-cell strong{font-size:8.8pt}
+.resume-body .proof-cell p{font-size:7.2pt;line-height:1.38}
+.resume-body .experience{margin-top:12px}
+.resume-body .experience h3{font-size:9.35pt;line-height:1.12}
+.resume-body .experience-head span{font-size:6.95pt}
+.resume-body .experience>p{font-size:7.45pt;line-height:1.38}
+.resume-body .experience ul,.resume-body .compact-list{margin-top:5px}
+.resume-body .experience li,.resume-body .compact-list li{margin:2.4px 0;font-size:7.3pt;line-height:1.34}
+.resume-body .tag-line{font-size:7.35pt;line-height:1.5}
+.resume-body .contribution-grid{gap:20px}
+.resume-body .transfer-note{padding:9px 11px;border-left:4px solid var(--signal-lime);background:#f7f7f4}
+.resume-body .transfer-note .doc-section-title{margin-bottom:6px}
+.resume-body .transfer-note p{margin:0;font-size:7.4pt;line-height:1.42}
+@media print{.resume-body .resume-page{overflow:hidden}}
