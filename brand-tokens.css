@@ -1,0 +1,29 @@
+:root {
+  /* Lab37 public-site recognition layer: source-sampled from lab37.us */
+  --lab-black: #050505;
+  --lab-black-soft: #111111;
+  --lab-white: #ffffff;
+  --lab-paper: #f4f4f1;
+  --lab-steel: #c7c9c7;
+  --lab-steel-dark: #777b78;
+  --lab-line: rgba(255, 255, 255, 0.22);
+  --lab-line-dark: rgba(5, 5, 5, 0.16);
+
+  /* Candidate-original signal colors, subordinate to Lab37 black / white */
+  --signal-lime: #caff38;
+  --signal-amber: #ffb84d;
+  --signal-coral: #ff6b58;
+  --signal-blue: #72d7ff;
+
+  --font-display: "Arial Narrow", "Helvetica Neue Condensed", "Roboto Condensed", "Franklin Gothic Medium", sans-serif;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  --page-max: 1540px;
+  --content-max: 1180px;
+  --radius-xs: 4px;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 30px;
+  --shadow-deep: 0 36px 100px rgba(0, 0, 0, 0.28);
+}

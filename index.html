@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Independent candidate vision by Russell Dudek for the Lab37 Robotics Product Manager role.">
+  <title>Russell Dudek | Lab37 Robotics Product Manager Candidate Vision</title>
+  <link rel="stylesheet" href="brand-tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="site-body">
+<header class="site-header">
+  <a class="lab37-wordmark" href="#top" aria-label="Lab37 candidate vision home">LAB37</a>
+  <span class="header-context">Robotics Product Manager · Candidate vision by Russell Dudek</span>
+  <nav><a href="#contract">Contract</a><a href="#evidence">Evidence</a><a href="#materials">Materials</a></nav>
+</header>
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="independent-line">Independent candidate vision · Russell Dudek</p>
+      <h1 id="hero-title">Turn every bowl <span>into a product decision.</span></h1>
+      <p class="hero-thesis"><strong>Bowl Builder is more than a robot.</strong> It is a complete product system where recipes, mechanics, order software, operator behavior, serviceability, and economics must clear one integrated product contract.</p>
+      <div class="hero-actions"><a class="action-link primary" href="#contract">Explore the product contract</a><a class="action-link" href="#mandate">See the mandate</a></div>
+    </div>
+    <div class="hero-stage" aria-label="Animated Recipe-to-Release Assembly">
+      <canvas id="assembly-canvas" aria-hidden="true"></canvas>
+      <div class="stage-labels" aria-hidden="true">
+        <div class="stage-label"><i></i><span>Food behavior</span></div><div class="stage-label"><i></i><span>Mechanics</span></div><div class="stage-label"><i></i><span>Order truth</span></div><div class="stage-label"><i></i><span>Operator flow</span></div><div class="stage-label"><i></i><span>Economics</span></div>
+      </div>
+      <p class="stage-caption"><strong>The Recipe-to-Release Assembly</strong>Five contract gates stay visible; a bowl advances only when every gate clears its acceptance conditions.</p>
+    </div>
+  </section>
+
+  <section class="section mandate-section" id="mandate">
+    <div class="section-number">01 · The mandate beneath the title</div>
+    <div class="mandate-grid"><h2>Make a promising robotic makeline <em>repeatable across recipes, sites, operators, and economics.</em></h2><div><p>Lab37 publicly describes a modular line where orders arrive through software, ingredients dispense by weight, cameras add intelligence, each bowl leaves a digital record, and the system closes the package.</p><p>The product question is not merely “Did the robot make a bowl?” It is: <strong>Did the complete system produce the intended food, at the intended pace, with recoverable behavior, a clear evidence trail, and economics that earn the next deployment?</strong></p><blockquote>Every release should make Bowl Builder easier to trust, easier to operate, and easier to scale.</blockquote></div></div>
+  </section>
+
+  <section class="section contract-section" id="contract">
+    <div class="section-number">02 · A decision model for the role</div>
+    <div class="section-heading"><h2>The Bowl Builder Product Contract</h2><p>A shared contract makes acceptance, evidence, ownership, and trade-offs explicit without flattening any discipline.</p></div>
+    <div class="simulator" aria-label="Interactive product contract simulator">
+      <aside class="simulator-controls">
+        <p class="simulator-label">Choose an operating scenario</p>
+        <div class="scenario-list" role="group" aria-label="Scenario choices"><button class="scenario-button" data-scenario="peak" aria-pressed="true">Peak rush</button><button class="scenario-button" data-scenario="menu" aria-pressed="false">Menu expansion</button><button class="scenario-button" data-scenario="pilot" aria-pressed="false">New-site pilot</button><button class="scenario-button" data-scenario="service" aria-pressed="false">Maintenance event</button></div>
+        <p class="simulator-label">Adjust illustrative pressure</p>
+        <div class="range-group">
+          <label>Throughput pressure <output data-output="throughput">5</output><input id="throughput" type="range" min="1" max="5" value="5"></label>
+          <label>Recipe variability <output data-output="variability">3</output><input id="variability" type="range" min="1" max="5" value="3"></label>
+          <label>Operator demand <output data-output="operator">2</output><input id="operator" type="range" min="1" max="5" value="2"></label>
+          <label>Service access <output data-output="service">2</output><input id="service" type="range" min="1" max="5" value="2"></label>
+        </div>
+        <button class="reset-button" id="reset-simulator">Reset to peak-rush baseline</button>
+        <small>Illustrative candidate model. Values are not claims about Lab37’s internal state.</small>
+      </aside>
+      <div class="simulator-readout" aria-live="polite"><span class="readout-state" id="readout-state">Integrated pilot — ready to validate</span><h3 id="readout-headline">Protect flow without losing bowl-level truth.</h3><p id="readout-summary">The release should preserve throughput while keeping portion evidence, operator recovery, and service signals visible enough to learn from the rush.</p><div class="evidence-strip"><div class="evidence-cell"><span>01</span><strong>Throughput</strong></div><div class="evidence-cell"><span>02</span><strong>Order latency</strong></div><div class="evidence-cell"><span>03</span><strong>Dispense accuracy</strong></div><div class="evidence-cell"><span>04</span><strong>Interventions</strong></div><div class="evidence-cell"><span>05</span><strong>Recovery time</strong></div></div></div>
+    </div>
+  </section>
+
+  <section class="section layers-section">
+    <div class="section-number">03 · One product, five contracts</div><h2>Requirements should reconcile before release.</h2>
+    <div class="layers-stack">
+      <article><b>01 / FOOD</b><h3>Recipe behavior</h3><p>Ingredient, temperature, humidity, hold-time, portion, and modification ranges.</p><small>Yield · variance · quality · waste</small></article>
+      <article><b>02 / MACHINE</b><h3>Electromechanical performance</h3><p>Capacity, accuracy, uptime, component life, access, fault behavior, and recovery.</p><small>Throughput · fault rate · restore time</small></article>
+      <article><b>03 / SOFTWARE</b><h3>Order truth</h3><p>POS input, recipe configuration, bowl record, camera evidence, fleet signal, and version state.</p><small>Completeness · traceability · alert quality</small></article>
+      <article><b>04 / PEOPLE</b><h3>Operator flow</h3><p>Loading, replenishment, changeover, intervention, cleaning, training, and escalation.</p><small>Touches · training · reset · adoption</small></article>
+      <article><b>05 / BUSINESS</b><h3>Scale economics</h3><p>Labor, waste, support, installation, reliability, customer experience, and utilization.</p><small>Payback inputs · support burden · margin</small></article>
+    </div>
+  </section>
+
+  <section class="product-section">
+    <img src="assets/brand/bowl-builder-software.webp" alt="Official Lab37 Bowl Builder product image showing equipment and its order interface">
+    <div><div class="section-number">04 · Public product context</div><h2>The system already tells us what the PM must connect.</h2><p>Order integration, ingredient-by-weight dispensing, camera context, per-bowl records, multi-robot coordination, packaging, operator workflow, serviceability, and economics form one learning surface.</p><div class="public-specs"><span><b>300 bowls/hr</b> public maximum specification</span><span><b>~3 min</b> single-bowl latency</span><span><b>40%+</b> public labor-reduction claim</span><span><b>18+</b> dispensers in standard system</span></div><a href="https://www.lab37.us/bowlbuilder">Source: Lab37 Bowl Builder →</a></div>
+  </section>
+
+  <section class="section pilot-section">
+    <div class="section-number">05 · Pilots as product instruments</div><h2>A pilot should answer the next roadmap decision.</h2>
+    <div class="blueprint-shell"><img src="assets/brand/bowl-builder-blueprint.svg" alt="Official Lab37 Bowl Builder technical blueprint"><ol><li><b>Define the decision</b><span>Name the roadmap, release, recipe, support, or commercial decision.</span></li><li><b>Establish the baseline</b><span>Record context, units, assumptions, and acceptance thresholds.</span></li><li><b>Instrument the whole system</b><span>Connect bowl output to machine state, software, operator, service, and economics.</span></li><li><b>Review exceptions first</b><span>Inspect modifications, edge ingredients, interventions, recovery, and support burden.</span></li><li><b>Convert evidence to ownership</b><span>Close with a requirement, roadmap action, operating standard, or next experiment.</span></li></ol></div>
+  </section>
+
+  <section class="section evidence-section" id="evidence">
+    <div class="section-number">06 · Why this background transfers</div><h2>Field reality has been the through-line.</h2>
+    <div class="proof-trail"><article><span>Vape-Jet · Direct</span><h3>Fielded robotics and telemetry loops</h3><p>Product-facing operating work across approximately 1,000 fielded robots, machine vision, customer support, production, quality, software issue flow, ERP, and release readiness.</p></article><article><span>Amazon · Direct</span><h3>Launch discipline behind a customer promise</h3><p>Launched Prime Pittsburgh in a 24/7 environment supporting approximately five million second-day orders annually through metrics, escalation, staffing, and standard work.</p></article><article><span>Compunetics · Direct</span><h3>Electromechanical manufacturing translation</h3><p>Led engineering, manufacturing, quality, customer delivery, validation, documentation, lifecycle controls, and high-reliability programs.</p></article><article><span>DudeWorth · Direct</span><h3>Product artifacts and AI-enabled workflows</h3><p>Build PRDs, user stories, acceptance criteria, review gates, decision records, agentic workflows, human approval, and measurable iteration.</p></article></div>
+  </section>
+
+  <section class="section plan-section">
+    <div class="section-number">07 · First 90 days</div><h2>Read the system. Prove the contract. Make learning repeatable.</h2>
+    <div class="plan-rail"><article><b>Days 1–30</b><h3>Read the system</h3><p>Observe design, assembly, testing, operation, support, and customer experience. Map decisions, evidence, and ownership.</p></article><article><b>Days 31–60</b><h3>Prove the contract</h3><p>Carry one pilot or release through requirements, readiness, validation, evidence, and decision close.</p></article><article><b>Days 61–90</b><h3>Make learning repeatable</h3><p>Install the roadmap record, product-health view, pilot review, and field-to-requirement loop worth reusing.</p></article></div>
+  </section>
+
+  <section class="section questions-section"><div class="section-number">08 · Questions for the conversation</div><h2>Where does the team want product clarity next?</h2><div class="questions-list"><p>Which decision is hardest because evidence lives across food, hardware, software, field operations, and economics?</p><p>What must a pilot prove before its learning becomes reusable across restaurants?</p><p>Which performance signals are trusted today, and where is context still manual?</p><p>How are culinary requirements, machine acceptance, and customer outcomes reconciled under time pressure?</p><p>Twelve months from now, what would make this PM indispensable to engineering, customers, and commercial leadership?</p></div></section>
+
+  <section class="section materials-section" id="materials"><div class="section-number">09 · Application and interview materials</div><h2>One thesis, different working surfaces.</h2><div class="materials-grid"><a href="resume.html"><span>2 pages</span><strong>Role-aligned resume</strong></a><a href="cover-letter.html"><span>1 page</span><strong>Cover letter</strong></a><a href="interview-brief.html"><span>4 pages</span><strong>Interview thesis brief</strong></a><a href="90-day-plan.html"><span>3 pages</span><strong>First 90 days</strong></a></div><div class="contact-bar"><b>Russell Dudek</b><span>Pittsburgh, Pennsylvania</span><a href="tel:+14122878640">412.287.8640</a><a href="mailto:russelldudek@gmail.com">russelldudek@gmail.com</a><a href="https://www.linkedin.com/in/russelldudek">linkedin.com/in/russelldudek</a></div></section>
+</main>
+<footer class="site-footer"><span>Independent candidate work by Russell Dudek. Not an official Lab37 publication or endorsement.</span><span><a href="https://www.lab37.us/">lab37.us</a> · <a href="https://job-boards.greenhouse.io/lab37/jobs/8620044002?gh_src=H6asVO">Job posting</a></span></footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
