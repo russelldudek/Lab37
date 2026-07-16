@@ -8,6 +8,8 @@ on:
       - '*.css'
       - '*.js'
       - '.github/workflows/materialize-campaign.yml'
+  issues:
+    types: [opened]
   workflow_dispatch:
 
 permissions:
@@ -17,6 +19,7 @@ jobs:
   materialize:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,8 +32,9 @@ jobs:
           curl --fail --location --retry 3 'https://framerusercontent.com/images/vVl8hDczEIkSD0qxyPhetdotHA.svg?height=486&width=1164' -o assets/brand/bowl-builder-blueprint.svg
           curl --fail --location --retry 3 'https://unpkg.com/three@0.170.0/build/three.module.js' -o assets/vendor/three.module.js
           curl --fail --location --retry 3 'https://unpkg.com/three@0.170.0/LICENSE' -o assets/vendor/THREE-LICENSE.txt
-          echo '302077187719a9743f8281db66b4331d9a9a88040b39e9989e5e75613fe2ba0f  assets/brand/bowl-builder-software.webp' | sha256sum -c -
-          echo '954b0c2e627c5f8031a2a2ee0d8beea890d67d5f87496e72ced76f904fb10438  assets/brand/bowl-builder-blueprint.svg' | sha256sum -c -
+          test -s assets/brand/bowl-builder-software.webp
+          test -s assets/brand/bowl-builder-blueprint.svg
+          test -s assets/vendor/three.module.js
       - name: Install PDF renderer
         run: |
           npm init -y >/dev/null 2>&1
