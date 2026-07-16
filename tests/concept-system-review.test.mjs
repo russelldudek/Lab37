@@ -3,6 +3,8 @@ import { readFileSync } from 'node:fs';
 
 const html = readFileSync('index.html', 'utf8');
 const css = readFileSync('concept-system.css', 'utf8');
+const animation = readFileSync('animation-v4.js', 'utf8');
+const vendorRuntime = readFileSync('assets/vendor/three.module.js', 'utf8');
 
 const requiredHtml = [
   'href="concept-system.css"',
@@ -55,5 +57,11 @@ for (const forbidden of ['roleforge', 'russelldudek/Lab37', 'Public repository']
 const externalSources = [...html.matchAll(/<a href="https:\/\/[^\"]+"[^>]*>/g)].map(match => match[0]);
 assert.ok(externalSources.length >= 7, 'Expected public source and company links');
 assert.ok(externalSources.filter(link => link.includes('target="_blank"')).every(link => link.includes('rel="noopener noreferrer"')), 'New-tab source links must use noopener noreferrer');
+
+assert.ok(!/https?:\/\//.test(vendorRuntime), 'The local Three.js runtime must not delegate to a remote CDN');
+const fallbackStart = animation.indexOf('startFallback(stage, reduceMotion, schedule)');
+const runtimeAwait = animation.indexOf('await loadThree()');
+assert.ok(fallbackStart >= 0 && runtimeAwait >= 0 && fallbackStart < runtimeAwait, 'The animated fallback must start before waiting for WebGL runtime loading');
+assert.ok(animation.includes('stopFallback?.()'), 'The fallback loop must be stopped after WebGL becomes ready');
 
 console.log('Concept-system review checks passed.');
