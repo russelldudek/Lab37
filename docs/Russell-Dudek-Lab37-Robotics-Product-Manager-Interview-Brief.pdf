@@ -1,0 +1,548 @@
+%PDF-1.4
+%ASCII
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 11 0 R /F2 12 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 1773 >>
+stream
+q
+1 1 1 rg
+0 0 612 792 re f
+Q
+0.02 0.02 0.02 rg
+0 744 612 48 re f
+0.79 1 0.22 rg
+0 740 612 4 re f
+BT
+/F2 18 Tf
+1 1 1 rg
+36 761 Td
+(TURN EVERY BOWL INTO A PRODUCT DECISION) Tj
+ET
+BT
+/F1 8 Tf
+0.82 0.82 0.80 rg
+36 748 Td
+(INTERVIEW THESIS BRIEF | 1 OF 4) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 714 Td
+(THE ACTUAL MANDATE) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 707 m 576 707 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 691 Td
+(Make a promising robotic makeline repeatable across recipes, sites, operators, support models, and) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 680 Td
+(economics by keeping food behavior, electromechanical performance, order truth, operator flow,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 669 Td
+(serviceability, and commercial evidence inside one product decision system.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 646 Td
+(CENTRAL OPERATING TENSIONS) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 639 m 576 639 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 623 Td
+(? Speed versus integrated readiness.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 612 Td
+(? Modularity versus system coherence.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 601 Td
+(? Customer specificity versus reusable product learning.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 590 Td
+(? Throughput versus recoverability.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 579 Td
+(? Technical proof versus business proof.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 556 Td
+(CANDIDATE THESIS) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 549 m 576 549 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 533 Td
+(Every release should make Bowl Builder easier to trust, easier to operate, and easier to scale.) Tj
+ET
+0.75 0.75 0.72 RG
+0.5 w
+36 34 m 576 34 l S
+BT
+/F1 7 Tf
+0.30 0.30 0.30 rg
+36 22 Td
+(Russell Dudek | Lab37 Robotics Product Manager | 1 / 4) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 11 0 R /F2 12 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 1910 >>
+stream
+q
+1 1 1 rg
+0 0 612 792 re f
+Q
+0.02 0.02 0.02 rg
+0 744 612 48 re f
+0.79 1 0.22 rg
+0 740 612 4 re f
+BT
+/F2 18 Tf
+1 1 1 rg
+36 761 Td
+(THE BOWL BUILDER PRODUCT CONTRACT) Tj
+ET
+BT
+/F1 8 Tf
+0.82 0.82 0.80 rg
+36 748 Td
+(INTERVIEW THESIS BRIEF | 2 OF 4) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 714 Td
+(FIVE CONTRACTS) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 707 m 576 707 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 691 Td
+(? Recipe behavior: acceptable ingredient, environment, portion, and modification ranges.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 680 Td
+(? Machine performance: capacity, accuracy, uptime, access, fault behavior, and recovery.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 669 Td
+(? Order truth: POS input, recipe configuration, bowl records, camera evidence, fleet signals, and) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 658 Td
+(  version state.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 647 Td
+(? Operator flow: loading, replenishment, changeover, intervention, cleaning, training, and escalation.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 636 Td
+(? Scale economics: labor, waste, support, installation, reliability, utilization, and customer evidence.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 613 Td
+(DECISION RECORD) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 606 m 576 606 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 590 Td
+(? Outcome and customer promise.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 579 Td
+(? Acceptance conditions across affected contracts.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 568 Td
+(? Evidence, units, baseline, context, and exceptions.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 557 Td
+(? Authority: who recommends, decides, operates, validates, and escalates.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 546 Td
+(? Economics and learning close.) Tj
+ET
+0.75 0.75 0.72 RG
+0.5 w
+36 34 m 576 34 l S
+BT
+/F1 7 Tf
+0.30 0.30 0.30 rg
+36 22 Td
+(Russell Dudek | Lab37 Robotics Product Manager | 2 / 4) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 11 0 R /F2 12 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 1778 >>
+stream
+q
+1 1 1 rg
+0 0 612 792 re f
+Q
+0.02 0.02 0.02 rg
+0 744 612 48 re f
+0.79 1 0.22 rg
+0 740 612 4 re f
+BT
+/F2 18 Tf
+1 1 1 rg
+36 761 Td
+(EVIDENCE MAP) Tj
+ET
+BT
+/F1 8 Tf
+0.82 0.82 0.80 rg
+36 748 Td
+(INTERVIEW THESIS BRIEF | 3 OF 4) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 714 Td
+(VAPE-JET) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 707 m 576 707 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 691 Td
+(Approximately 1,000 fielded robots; telemetry, machine-vision context, support, engineering issue flow,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 680 Td
+(quality, production, ERP, training, and release readiness.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 657 Td
+(AMAZON) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 650 m 576 650 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 634 Td
+(Prime Pittsburgh launch, 24/7 execution, customer promise, high-volume flow, staffing, metrics,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 623 Td
+(escalation, and standard work.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 600 Td
+(COMPUNETICS) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 593 m 576 593 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 577 Td
+(Electromechanical engineering, manufacturing, quality, validation, documentation, lifecycle controls,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 566 Td
+(complex assemblies, and high-reliability customer delivery.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 543 Td
+(DUDEWORTH) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 536 m 576 536 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 520 Td
+(PRDs, stories, acceptance criteria, AI-assisted workflows, human authority, review gates, decision) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 509 Td
+(records, evaluation, and governance.) Tj
+ET
+0.75 0.75 0.72 RG
+0.5 w
+36 34 m 576 34 l S
+BT
+/F1 7 Tf
+0.30 0.30 0.30 rg
+36 22 Td
+(Russell Dudek | Lab37 Robotics Product Manager | 3 / 4) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 11 0 R /F2 12 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 2493 >>
+stream
+q
+1 1 1 rg
+0 0 612 792 re f
+Q
+0.02 0.02 0.02 rg
+0 744 612 48 re f
+0.79 1 0.22 rg
+0 740 612 4 re f
+BT
+/F2 18 Tf
+1 1 1 rg
+36 761 Td
+(INTERVIEW WORKING PAGE) Tj
+ET
+BT
+/F1 8 Tf
+0.82 0.82 0.80 rg
+36 748 Td
+(INTERVIEW THESIS BRIEF | 4 OF 4) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 714 Td
+(FIRST 90 DAYS) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 707 m 576 707 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 691 Td
+(? Days 1-30: observe the system, map decisions, evidence, ownership, and trusted measures.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 680 Td
+(? Days 31-60: carry one pilot or release through requirements, readiness, validation, evidence, and) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 669 Td
+(  decision close.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 658 Td
+(? Days 61-90: install the smallest useful roadmap record, product-health view, pilot review, and field-) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 647 Td
+(  to-requirement loop.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 624 Td
+(EXECUTIVE QUESTIONS) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 617 m 576 617 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 601 Td
+(? Which decision is hardest because evidence lives across food, hardware, software, field operations,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 590 Td
+(  and economics?) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 579 Td
+(? What must a pilot prove before the learning becomes reusable?) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 568 Td
+(? Which performance signals are trusted today, and where is context still manual?) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 557 Td
+(? How are culinary requirements, machine acceptance, and customer outcomes reconciled under time) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 546 Td
+(  pressure?) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 535 Td
+(? What would make this PM indispensable twelve months from now?) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 512 Td
+(CLOSING POSITION) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 505 m 576 505 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 489 Td
+(My product-management value is making complex work visible enough to decide. I connect customer and field) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 478 Td
+(truth to the requirements, evidence, ownership, launch discipline, and operating cadence that let) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 467 Td
+(multidisciplinary teams move faster together.) Tj
+ET
+0.75 0.75 0.72 RG
+0.5 w
+36 34 m 576 34 l S
+BT
+/F1 7 Tf
+0.30 0.30 0.30 rg
+36 22 Td
+(Russell Dudek | Lab37 Robotics Product Manager | 4 / 4) Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+12 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 13
+0000000000 65535 f 
+0000000016 00000 n 
+0000000065 00000 n 
+0000000140 00000 n 
+0000000278 00000 n 
+0000002102 00000 n 
+0000002240 00000 n 
+0000004201 00000 n 
+0000004339 00000 n 
+0000006168 00000 n 
+0000006307 00000 n 
+0000008852 00000 n 
+0000008923 00000 n 
+trailer
+<< /Size 13 /Root 1 0 R >>
+startxref
+8999
+%%EOF

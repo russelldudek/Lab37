@@ -1,0 +1,4 @@
+/* Official-source visual fallback. Local files remain valid DOM targets; the official Lab37-hosted imagery is used as the visible recognition layer until the publication workflow replaces the local placeholders. */
+.product-section>img{display:none!important}.product-section::before{content:"";display:block;min-height:640px;background:url('https://framerusercontent.com/images/yDgux3gwMTX6CNMOWK89q1iF0.jpg?height=3989&width=7990') center/cover no-repeat}.blueprint-shell>img{display:none!important}.blueprint-shell::before{content:"";display:block;min-height:540px;background:#fff url('https://framerusercontent.com/images/vVl8hDczEIkSD0qxyPhetdotHA.svg?height=486&width=1164') center/contain no-repeat}
+@media(max-width:1000px){.product-section::before{min-height:420px}.blueprint-shell::before{min-height:360px}}
+@media(max-width:650px){.blueprint-shell::before{min-height:300px}}

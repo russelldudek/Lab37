@@ -1,0 +1,479 @@
+%PDF-1.4
+%ASCII
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 9 0 R /F2 10 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 2283 >>
+stream
+q
+1 1 1 rg
+0 0 612 792 re f
+Q
+0.02 0.02 0.02 rg
+0 744 612 48 re f
+0.79 1 0.22 rg
+0 740 612 4 re f
+BT
+/F2 18 Tf
+1 1 1 rg
+36 761 Td
+(FIRST 90 DAYS) Tj
+ET
+BT
+/F1 8 Tf
+0.82 0.82 0.80 rg
+36 748 Td
+(READ THE SYSTEM | PROVE THE CONTRACT | MAKE LEARNING REPEATABLE) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 714 Td
+(90-DAY OUTCOMES) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 707 m 576 707 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 691 Td
+(? One shared system map of dependencies, decisions, trusted signals, and evidence gaps.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 680 Td
+(? One pilot or release carried through requirement, acceptance, launch readiness, field evidence, and) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 669 Td
+(  roadmap action.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 658 Td
+(? A useful product review cadence connecting roadmap, release, pilots, telemetry, exceptions, customer) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 647 Td
+(  insight, and economics.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 636 Td
+(? A pilot-to-release record and onboarding blueprint that make the next site or recipe easier than the) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 625 Td
+(  last.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 602 Td
+(GUIDING PRINCIPLES) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 595 m 576 595 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 579 Td
+(? Observe before prescribing.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 568 Td
+(? Use artifacts to clarify decisions, not create documentation volume.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 557 Td
+(? Treat exceptions as product data.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 546 Td
+(? Give every KPI units, context, source, and decision use.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 535 Td
+(? Return every pilot and release learning to the product.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 512 Td
+(LISTENING MAP) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 505 m 576 505 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 489 Td
+(Mechanical, electrical, software, data, culinary, manufacturing, quality, support, field, customer,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 478 Td
+(commercial, and leadership stakeholders.) Tj
+ET
+0.75 0.75 0.72 RG
+0.5 w
+36 34 m 576 34 l S
+BT
+/F1 7 Tf
+0.30 0.30 0.30 rg
+36 22 Td
+(Russell Dudek | Lab37 Robotics Product Manager | 1 / 3) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 9 0 R /F2 10 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 2435 >>
+stream
+q
+1 1 1 rg
+0 0 612 792 re f
+Q
+0.02 0.02 0.02 rg
+0 744 612 48 re f
+0.79 1 0.22 rg
+0 740 612 4 re f
+BT
+/F2 18 Tf
+1 1 1 rg
+36 761 Td
+(DAYS 1-60) Tj
+ET
+BT
+/F1 8 Tf
+0.82 0.82 0.80 rg
+36 748 Td
+(READ THE SYSTEM AND PROVE ONE COMPLETE PRODUCT CONTRACT) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 714 Td
+(DAYS 1-30 | READ THE SYSTEM) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 707 m 576 707 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 691 Td
+(? Observe lab testing, assembly, recipe setup, loading, production, cleaning, maintenance, support, and) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 680 Td
+(  customer use.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 669 Td
+(? Map recurring roadmap, release, pilot, escalation, and post-launch decisions and clarify who) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 658 Td
+(  recommends, decides, operates, and escalates.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 647 Td
+(? Inventory trusted metrics, telemetry, manual records, bowl-level data, support context, quality data,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 636 Td
+(  business outcomes, and interpretation limits.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 625 Td
+(? Select one decision-critical pilot or release with enough access and evidence to learn within 30 days.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 602 Td
+(DAYS 31-60 | PROVE THE CONTRACT) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 595 m 576 595 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 579 Td
+(? Author or refine the PRD, user stories, acceptance criteria, assumptions, dependencies, decision) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 568 Td
+(  owner, and success measures.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 557 Td
+(? Combine operator interviews, workflow observation, technical input, telemetry, support cases, and) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 546 Td
+(  business context.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 535 Td
+(? Facilitate one integrated readiness review across food, machine, software, operator, manufacturing,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 524 Td
+(  support, and commercial conditions.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 513 Td
+(? Define pilot baseline, site context, onboarding, test plan, exceptions, data capture, customer) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 502 Td
+(  interface, and decision close.) Tj
+ET
+0.75 0.75 0.72 RG
+0.5 w
+36 34 m 576 34 l S
+BT
+/F1 7 Tf
+0.30 0.30 0.30 rg
+36 22 Td
+(Russell Dudek | Lab37 Robotics Product Manager | 2 / 3) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 9 0 R /F2 10 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 2604 >>
+stream
+q
+1 1 1 rg
+0 0 612 792 re f
+Q
+0.02 0.02 0.02 rg
+0 744 612 48 re f
+0.79 1 0.22 rg
+0 740 612 4 re f
+BT
+/F2 18 Tf
+1 1 1 rg
+36 761 Td
+(DAYS 61-90) Tj
+ET
+BT
+/F1 8 Tf
+0.82 0.82 0.80 rg
+36 748 Td
+(MAKE PRODUCT LEARNING REPEATABLE WITHOUT UNNECESSARY CEREMONY) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 714 Td
+(REUSABLE MECHANISMS) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 707 m 576 707 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 691 Td
+(? Roadmap decision record: outcome, dependency, acceptance, economics, ownership, and learning value.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 680 Td
+(? Product health view: system performance and business outcomes with context and exceptions.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 669 Td
+(? Pilot evidence review: baseline, operating context, evidence, exceptions, customer voice, decision,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 658 Td
+(  owner, and follow-up.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 647 Td
+(? Release readiness: only conditions that materially change confidence, recovery, customer outcome, or) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 636 Td
+(  cost.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 625 Td
+(? Field-to-requirement loop: signal, context, root cause, product decision, owner, and validation) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 614 Td
+(  result.) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 603 Td
+(? Onboarding blueprint: site readiness, integration, install, recipe setup, training, go-live, support,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 592 Td
+(  and first review.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 569 Td
+(BALANCED PRODUCT SCORECARD) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 562 m 576 562 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 546 Td
+(System, food, operator, customer, economics, and learning-speed categories. Measures are proposed for) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 535 Td
+(discovery, not claims about current Lab37 dashboards or thresholds.) Tj
+ET
+BT
+/F2 11 Tf
+0.05 0.05 0.05 rg
+36 512 Td
+(DAY-90 SUCCESS) Tj
+ET
+0.35 0.40 0.15 RG
+0.8 w
+36 505 m 576 505 l S
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 489 Td
+(The goal is not more product documents. It is a clearer operating system for decisions: the team can see) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 478 Td
+(what the complete product must do, which evidence matters, who owns the trade-off, what a pilot learned,) Tj
+ET
+BT
+/F1 8.3 Tf
+0.12 0.12 0.12 rg
+42 467 Td
+(and how that learning changes the next release or deployment.) Tj
+ET
+0.75 0.75 0.72 RG
+0.5 w
+36 34 m 576 34 l S
+BT
+/F1 7 Tf
+0.30 0.30 0.30 rg
+36 22 Td
+(Russell Dudek | Lab37 Robotics Product Manager | 3 / 3) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+10 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000016 00000 n 
+0000000065 00000 n 
+0000000134 00000 n 
+0000000271 00000 n 
+0000002605 00000 n 
+0000002742 00000 n 
+0000005228 00000 n 
+0000005365 00000 n 
+0000008020 00000 n 
+0000008090 00000 n 
+trailer
+<< /Size 11 /Root 1 0 R >>
+startxref
+8166
+%%EOF

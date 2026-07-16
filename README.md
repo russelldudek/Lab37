@@ -9,30 +9,19 @@ Bowl Builder is a complete product system, not an isolated robot. The campaign d
 ## Routes
 
 - `index.html` — candidate vision and interactive Recipe-to-Release Assembly
-- `resume.html` — exactly two printable pages
-- `cover-letter.html` — exactly one printable page
+- `resume.html` — two-page role-aligned resume
+- `cover-letter.html` — one-page cover letter
 - `interview-brief.html` — four-page interview thesis brief
 - `90-day-plan.html` — three-page entry plan
 
 ## Downloads
 
-- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf`
-- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf`
-- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf`
-- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf`
+Four real PDF files are committed under `docs/` with exact page counts of 2 / 1 / 4 / 3.
 
-## Local preview
+## Visual dependencies
 
-Serve the directory with any static server. For example:
+The Three.js experience uses a version-pinned 0.170.0 browser module shim. Official Bowl Builder product and blueprint imagery is rendered from Lab37's official public asset URLs with provenance documented in `brand-intelligence.md`. The retained publication workflow can pin those dependencies locally when GitHub Actions is available.
 
-```bash
-python3 -m http.server 8000
-```
+## Publication
 
-Then open `http://localhost:8000/`.
-
-## Brand and provenance
-
-See `brand-intelligence.md` and `sources.md`. Official Bowl Builder imagery is stored locally for nominative product identification. Three.js 0.170.0 is locally pinned under `assets/vendor/` with its MIT license.
-
-This is an independent candidate work product and is not an official Lab37 publication or endorsement.
+Enable GitHub Pages from `main` and `/ (root)`. This is an independent candidate work product and is not an official Lab37 publication or endorsement.

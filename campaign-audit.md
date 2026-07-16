@@ -1,63 +1,25 @@
 # Candidate Campaign Audit
 
-## Strategic and evidence integrity
+## Current state
 
-- Company and role context: source-grounded
-- Candidate evidence: verified through supplied application materials and candidate evidence record
-- Invented metrics, employers, titles, deployments, customers, or ownership claims: none
-- Illustrative model and proposed measures: labeled
-- Application narrative continuity: passed
+Campaign state: **building — main source and downloadable documents committed; Pages activation and live verification remain.**
 
-## Brand fidelity
+## Passed source-level gates
 
-- Visible company identity above fold: passed locally
-- Official standalone logo / wordmark: unavailable with documented source-based reason
-- Official product and blueprint assets stored locally: passed
-- Color token provenance: passed
-- Typography decision: passed
-- Candidate-original accents subordinate to company recognition layer: passed
-- Document brand continuity: passed
-- Independent-candidate distinction: passed
+- Complete candidate routes: index, resume, cover letter, interview brief, and 90-day plan.
+- Role-derived Three.js Recipe-to-Release Assembly with version-pinned browser module.
+- Scenario switching, bounded pressure controls, smart peak-rush baseline, reset behavior, and reduced-motion source treatment.
+- Reciprocal resume and cover-letter navigation.
+- Real PDF files committed with exact page counts: resume 2, cover letter 1, interview brief 4, 90-day plan 3.
+- Candidate evidence remains within verified claim boundaries.
+- Public source scan contains zero private orchestration-name references in candidate-facing files.
+- Official Lab37 product and blueprint imagery uses official source URLs with documented provenance and no endorsement claim.
 
-## Visual and interaction experience
+## Remaining publication gates
 
-- Original role-derived visual concept: Recipe-to-Release Assembly
-- Role-derived Three.js motion: passed locally
-- Meaningful scenario and pressure interaction: passed locally
-- Smart starting state: Peak rush baseline
-- Reset behavior: passed locally
-- Value before document asks: passed
-- Context and assumptions visible: passed
-- Reduced-motion source treatment: passed
-- Dark-pattern review: passed
-- Desktop 1440 x 900 render: passed locally
-- Laptop 1280 x 800 render: passed locally
-- Tablet 768 x 1024 responsive composition: passed locally
-- Mobile 390 x 844 responsive composition: passed locally
-- Horizontal overflow checks: passed locally
-- Desktop Three.js render console / page errors: zero
-- Scenario switching and reset logic: passed locally
+- Enable GitHub Pages from `main` and `/ (root)`.
+- Verify the live site at desktop, laptop, tablet, mobile, and reduced-motion settings.
+- Verify all live relative routes, document downloads, Three.js rendering, and official imagery.
+- After the live URL is verified, add the complete candidate-vision URL to the resume and cover-letter contact systems and regenerate those PDFs.
 
-## Documents and PDFs
-
-- Resume PDF: 2 pages, US Letter, passed
-- Cover letter PDF: 1 page, US Letter, passed
-- Interview brief PDF: 4 pages, US Letter, passed
-- 90-day plan PDF: 3 pages, US Letter, passed
-- PDF text extraction: passed
-- PDF visual render review: passed locally
-- Reciprocal resume / cover-letter navigation: passed locally
-- PDF download links: passed locally
-- Local relative links and assets: passed
-- HTML page titles and heading structure: passed
-
-## Candidate-facing confidentiality
-
-- Public text / source scan: zero prohibited internal-name matches
-- PDF text and metadata scan: zero prohibited internal-name matches
-- Public source-repository invitations: zero
-- Confidential clients or private advisory relationships exposed: zero
-
-## Publication state
-
-Campaign state: building. The complete audited source package is being committed to the dedicated public campaign repository on `main`. GitHub Pages activation, live-route verification against the final `main` head, and insertion of the verified live candidate-vision URL into the document contact system remain publication gates. The unverified URL is intentionally omitted from the documents.
+The campaign is not classified as complete until those live checks pass.

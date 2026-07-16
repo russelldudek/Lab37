@@ -1,7 +1,5 @@
 # Artifact Manifest
 
-The campaign source is committed directly to `main`. The materialization workflow fetches the two official Lab37 product assets, pins Three.js 0.170.0, renders the four PDF downloads from the committed HTML print layouts, verifies the 2 / 1 / 4 / 3 page-count contracts, removes temporary build dependencies, and commits the generated files back to `main`.
-
 ## Candidate routes
 
 - `index.html`
@@ -14,6 +12,7 @@ The campaign source is committed directly to `main`. The materialization workflo
 
 - `styles.css`
 - `brand-tokens.css`
+- `remote-fallback.css`
 - `app.js`
 - `brand-intelligence.md`
 - `sources.md`
@@ -21,13 +20,16 @@ The campaign source is committed directly to `main`. The materialization workflo
 - `README.md`
 - `.nojekyll`
 
-## Materialized assets
+## Brand and runtime files
 
-- `assets/brand/bowl-builder-software.webp`
-- `assets/brand/bowl-builder-blueprint.svg`
-- `assets/vendor/three.module.js`
+- `assets/brand/bowl-builder-software.webp` — local valid placeholder; visible official-source image is defined in `remote-fallback.css` until pinning workflow succeeds.
+- `assets/brand/bowl-builder-blueprint.svg` — local valid placeholder; visible official-source blueprint is defined in `remote-fallback.css` until pinning workflow succeeds.
+- `assets/vendor/three.module.js` — version-pinned Three.js 0.170.0 browser module shim.
 - `assets/vendor/THREE-LICENSE.txt`
-- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf`
-- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf`
-- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf`
-- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf`
+
+## Downloadable documents
+
+- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf` — 2 pages.
+- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf` — 1 page.
+- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf` — 4 pages.
+- `docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf` — 3 pages.
