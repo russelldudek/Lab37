@@ -6,7 +6,10 @@ on:
     paths:
       - index.html
       - concept-system.css
+      - resume.html
+      - cover-letter.html
       - tests/concept-system-review.test.mjs
+      - tests/document-evidence.test.mjs
       - .github/workflows/concept-system-review.yml
   workflow_dispatch:
 
@@ -24,3 +27,5 @@ jobs:
           node --check animation-v4.js
       - name: Concept narrative and layout contract
         run: node tests/concept-system-review.test.mjs
+      - name: Resume and cover-letter evidence contract
+        run: node tests/document-evidence.test.mjs
