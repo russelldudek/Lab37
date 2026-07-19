@@ -1,6 +1,20 @@
 name: Application document review
 
 on:
+  pull_request:
+    branches: [main]
+    paths:
+      - resume.html
+      - cover-letter.html
+      - interview-brief.html
+      - 90-day-plan.html
+      - styles.css
+      - document-revision.css
+      - brand-tokens.css
+      - concept-system.css
+      - index.html
+      - scripts/render-documents.mjs
+      - .github/workflows/document-review.yml
   push:
     branches:
       - concept/atoms-food-system-review
@@ -96,6 +110,7 @@ jobs:
           retention-days: 7
 
       - name: Commit regenerated PDFs to review branch
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
