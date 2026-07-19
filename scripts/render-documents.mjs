@@ -11,9 +11,18 @@ const documents = [
     route: 'cover-letter.html',
     output: 'docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf',
   },
+  {
+    route: 'interview-brief.html',
+    output: 'docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf',
+  },
+  {
+    route: '90-day-plan.html',
+    output: 'docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf',
+  },
 ];
 
 await mkdir('docs', { recursive: true });
+await mkdir('review-rendered/site', { recursive: true });
 const browser = await chromium.launch({ headless: true });
 
 try {
@@ -30,6 +39,27 @@ try {
       printBackground: true,
       preferCSSPageSize: true,
       margin: { top: '0', right: '0', bottom: '0', left: '0' },
+    });
+    await page.close();
+  }
+
+  for (const viewport of [
+    { name: 'desktop', width: 1440, height: 1000 },
+    { name: 'mobile', width: 390, height: 844 },
+  ]) {
+    const page = await browser.newPage({
+      viewport: { width: viewport.width, height: viewport.height },
+      deviceScaleFactor: 1,
+    });
+    await page.emulateMedia({ media: 'screen', colorScheme: 'dark' });
+    await page.goto(`${baseUrl}/index.html`, { waitUntil: 'networkidle', timeout: 30_000 });
+    await page.evaluate(async () => {
+      if (document.fonts?.ready) await document.fonts.ready;
+    });
+    await page.screenshot({
+      path: `review-rendered/site/index-${viewport.name}.png`,
+      fullPage: true,
+      animations: 'disabled',
     });
     await page.close();
   }
