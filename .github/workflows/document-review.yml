@@ -7,9 +7,13 @@ on:
     paths:
       - resume.html
       - cover-letter.html
+      - interview-brief.html
+      - 90-day-plan.html
       - styles.css
       - document-revision.css
       - brand-tokens.css
+      - concept-system.css
+      - index.html
       - scripts/render-documents.mjs
       - .github/workflows/document-review.yml
   workflow_dispatch:
@@ -48,27 +52,61 @@ jobs:
           cat /tmp/lab37-doc-server.log
           exit 1
 
-      - name: Render PDFs from HTML
+      - name: Render PDFs and site review images
         run: node scripts/render-documents.mjs
 
-      - name: Verify page counts and evidence
+      - name: Verify page counts and alignment evidence
         run: |
-          test "$(pdfinfo docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf | awk '/^Pages:/ {print $2}')" = "2"
-          test "$(pdfinfo docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf | awk '/^Pages:/ {print $2}')" = "1"
-          pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf - | grep -F "Prime Now launch team with Whole Foods"
-          pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf - | grep -F "Food Safety Management certification"
-          pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf - | grep -Fi "How I Would Contribute"
-          pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf - | grep -F "Prime Now launch team with Whole Foods"
-          pdftotext docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf - | grep -F "Food Safety Management certification"
+          RESUME=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf
+          COVER=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf
+          BRIEF=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf
+          PLAN=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf
+          test "$(pdfinfo "$RESUME" | awk '/^Pages:/ {print $2}')" = "2"
+          test "$(pdfinfo "$COVER" | awk '/^Pages:/ {print $2}')" = "1"
+          test "$(pdfinfo "$BRIEF" | awk '/^Pages:/ {print $2}')" = "4"
+          test "$(pdfinfo "$PLAN" | awk '/^Pages:/ {print $2}')" = "3"
+          pdftotext "$RESUME" - | grep -F "Prime Now launch team with Whole Foods"
+          pdftotext "$RESUME" - | grep -F "Food Safety Management certification"
+          pdftotext "$RESUME" - | grep -Fi "How I Would Contribute"
+          pdftotext "$COVER" - | grep -F "product clarity without slowing invention"
+          pdftotext "$COVER" - | grep -F "Prime Now launch team with Whole Foods"
+          pdftotext "$BRIEF" - | grep -F "Invention velocity vs. product continuity"
+          pdftotext "$BRIEF" - | grep -F "first dedicated product manager"
+          pdftotext "$BRIEF" - | grep -F "Food Safety Management certification"
+          pdftotext "$PLAN" - | grep -F "NSF / UL"
+          pdftotext "$PLAN" - | grep -F "market and competitive evidence"
+          for pdf in "$RESUME" "$COVER" "$BRIEF" "$PLAN"; do
+            ! pdftotext "$pdf" - | grep -Ei "roleforge|russelldudek/Lab37|Public repository"
+          done
+
+      - name: Rasterize every PDF page
+        run: |
+          mkdir -p review-rendered/resume review-rendered/cover review-rendered/brief review-rendered/plan
+          pdftoppm -png -r 120 docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf review-rendered/resume/page
+          pdftoppm -png -r 120 docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf review-rendered/cover/page
+          pdftoppm -png -r 120 docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf review-rendered/brief/page
+          pdftoppm -png -r 120 docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf review-rendered/plan/page
+
+      - name: Upload pre-send review evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab37-pre-send-review
+          path: review-rendered
+          if-no-files-found: error
+          retention-days: 7
 
       - name: Commit regenerated PDFs to review branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf
+          git add \
+            docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf \
+            docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf \
+            docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf \
+            docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf
           if git diff --cached --quiet; then
             echo "PDFs already match the reviewed HTML."
           else
-            git commit -m "Regenerate reviewed resume and cover letter PDFs"
+            git commit -m "Regenerate complete reviewed candidate package"
             git push origin HEAD:concept/atoms-food-system-review
           fi
