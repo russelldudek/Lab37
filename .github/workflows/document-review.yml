@@ -1,0 +1,134 @@
+name: Application document review
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - resume.html
+      - cover-letter.html
+      - interview-brief.html
+      - 90-day-plan.html
+      - styles.css
+      - document-revision.css
+      - final-geometry.css
+      - brand-tokens.css
+      - concept-system.css
+      - index.html
+      - scripts/render-documents.mjs
+      - .github/workflows/document-review.yml
+  push:
+    branches:
+      - concept/atoms-food-system-review
+    paths:
+      - resume.html
+      - cover-letter.html
+      - interview-brief.html
+      - 90-day-plan.html
+      - styles.css
+      - document-revision.css
+      - final-geometry.css
+      - brand-tokens.css
+      - concept-system.css
+      - index.html
+      - scripts/render-documents.mjs
+      - .github/workflows/document-review.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: concept/atoms-food-system-review
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install document renderer
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 4173 > /tmp/lab37-doc-server.log 2>&1 &
+          for attempt in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/resume.html > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/lab37-doc-server.log
+          exit 1
+
+      - name: Render PDFs and site review images
+        run: node scripts/render-documents.mjs
+
+      - name: Rasterize every PDF page
+        run: |
+          mkdir -p review-rendered/resume review-rendered/cover review-rendered/brief review-rendered/plan
+          pdftoppm -png -r 120 docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf review-rendered/resume/page
+          pdftoppm -png -r 120 docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf review-rendered/cover/page
+          pdftoppm -png -r 120 docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf review-rendered/brief/page
+          pdftoppm -png -r 120 docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf review-rendered/plan/page
+
+      - name: Upload pre-send review evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab37-pre-send-review
+          path: review-rendered
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Verify page counts and alignment evidence
+        run: |
+          RESUME=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf
+          COVER=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf
+          BRIEF=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf
+          PLAN=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf
+          for spec in "$RESUME:2:resume" "$COVER:1:cover" "$BRIEF:4:brief" "$PLAN:3:plan"; do
+            file=${spec%%:*}; rest=${spec#*:}; expected=${rest%%:*}; label=${rest##*:}
+            actual=$(pdfinfo "$file" | awk '/^Pages:/ {print $2}')
+            echo "$label pages: actual=$actual expected=$expected"
+            test "$actual" = "$expected"
+          done
+          mkdir -p /tmp/lab37-pdf-text
+          pdftotext "$RESUME" - | tr '\n' ' ' | tr -s ' ' > /tmp/lab37-pdf-text/resume.txt
+          pdftotext "$COVER" - | tr '\n' ' ' | tr -s ' ' > /tmp/lab37-pdf-text/cover.txt
+          pdftotext "$BRIEF" - | tr '\n' ' ' | tr -s ' ' > /tmp/lab37-pdf-text/brief.txt
+          pdftotext "$PLAN" - | tr '\n' ' ' | tr -s ' ' > /tmp/lab37-pdf-text/plan.txt
+          grep -F "Prime Now launch team with Whole Foods" /tmp/lab37-pdf-text/resume.txt
+          grep -F "Food Safety Management certification" /tmp/lab37-pdf-text/resume.txt
+          grep -Fi "How I Would Contribute" /tmp/lab37-pdf-text/resume.txt
+          grep -F "product clarity without slowing invention" /tmp/lab37-pdf-text/cover.txt
+          grep -F "Prime Now launch team with Whole Foods" /tmp/lab37-pdf-text/cover.txt
+          grep -F "Invention velocity vs. product continuity" /tmp/lab37-pdf-text/brief.txt
+          grep -F "first dedicated product manager" /tmp/lab37-pdf-text/brief.txt
+          grep -F "Food Safety Management certification" /tmp/lab37-pdf-text/brief.txt
+          grep -F "NSF / UL" /tmp/lab37-pdf-text/plan.txt
+          grep -F "market and competitive evidence" /tmp/lab37-pdf-text/plan.txt
+          ! grep -Ei "roleforge|russelldudek/Lab37|Public repository" /tmp/lab37-pdf-text/*.txt
+
+      - name: Commit regenerated PDFs to review branch
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf \
+            docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf \
+            docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf \
+            docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf
+          if git diff --cached --quiet; then
+            echo "PDFs already match the reviewed HTML."
+          else
+            git commit -m "Regenerate complete reviewed candidate package"
+            git push origin HEAD:concept/atoms-food-system-review
+          fi
