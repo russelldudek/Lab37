@@ -1,20 +1,69 @@
-.resume-body .doc-body{padding-top:15px}
-.resume-body .resume-summary{gap:22px;padding:15px 0 17px}
-.resume-body .resume-summary h1{font-size:24.5pt;line-height:.96}
-.resume-body .resume-summary p{font-size:8.55pt;line-height:1.46}
-.resume-body .doc-section{margin-top:15px}
-.resume-body .proof-cell{padding:9px 10px}
-.resume-body .proof-cell strong{font-size:8.8pt}
-.resume-body .proof-cell p{font-size:7.2pt;line-height:1.38}
-.resume-body .experience{margin-top:12px}
-.resume-body .experience h3{font-size:9.35pt;line-height:1.12}
-.resume-body .experience-head span{font-size:6.95pt}
-.resume-body .experience>p{font-size:7.45pt;line-height:1.38}
-.resume-body .experience ul,.resume-body .compact-list{margin-top:5px}
-.resume-body .experience li,.resume-body .compact-list li{margin:2.4px 0;font-size:7.3pt;line-height:1.34}
-.resume-body .tag-line{font-size:7.35pt;line-height:1.5}
-.resume-body .contribution-grid{gap:20px}
-.resume-body .transfer-note{padding:9px 11px;border-left:4px solid var(--signal-lime);background:#f7f7f4}
-.resume-body .transfer-note .doc-section-title{margin-bottom:6px}
-.resume-body .transfer-note p{margin:0;font-size:7.4pt;line-height:1.42}
-@media print{.resume-body .resume-page{overflow:hidden}}
+.resume-body .print-page{padding:.52in .58in .48in}
+.resume-body .doc-body{padding-top:17px}
+.resume-body .resume-summary{gap:23px;padding:17px 0 19px}
+.resume-body .resume-summary h1{font-size:26pt;line-height:.96}
+.resume-body .resume-summary p{font-size:9pt;line-height:1.5}
+.resume-body .doc-section{margin-top:18px}
+.resume-body .doc-section-title{font-size:11pt;margin-bottom:8px;padding-bottom:6px}
+.resume-body .proof-cell{padding:11px 11px}
+.resume-body .proof-cell strong{font-size:9.15pt}
+.resume-body .proof-cell p{font-size:7.55pt;line-height:1.42}
+.resume-body .experience{margin-top:14px}
+.resume-body .experience h3{font-size:9.7pt;line-height:1.14}
+.resume-body .experience-head span{font-size:7.1pt}
+.resume-body .experience>p{font-size:7.75pt;line-height:1.42}
+.resume-body .experience ul,.resume-body .compact-list{margin-top:6px}
+.resume-body .experience li,.resume-body .compact-list li{margin:3px 0;font-size:7.6pt;line-height:1.4}
+.resume-body .tag-line{font-size:7.65pt;line-height:1.55}
+.resume-body .contribution-grid{gap:21px}
+.resume-body .transfer-note{padding:11px 12px;border-left:4px solid var(--signal-lime);background:#f7f7f4}
+.resume-body .transfer-note .doc-section-title{margin-bottom:7px}
+.resume-body .transfer-note p{margin:0;font-size:7.75pt;line-height:1.46}
+
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page{padding:.55in .62in .5in}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .doc-body{padding-top:18px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-hero{gap:24px;padding:18px 0 21px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-thesis{font-size:30pt;line-height:.96}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-side{padding:14px;font-size:8.8pt;line-height:1.48}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .doc-section{margin-top:24px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .doc-section-title{margin-bottom:10px;padding-bottom:7px;font-size:12pt}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .doc-summary{font-size:9.4pt;line-height:1.55}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .proof-cell{padding:14px 13px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .proof-cell strong{font-size:9.5pt}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .proof-cell p{font-size:8.15pt;line-height:1.48}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .doc-table{font-size:8.15pt;line-height:1.45}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .doc-table th,body:has(.document-actions a[href*="Interview-Brief.pdf"]) .doc-table td{padding:9px 10px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .doc-table th{font-size:7.55pt;line-height:1.3}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-grid{gap:8px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-card{padding:12px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-card h3{font-size:9.3pt;line-height:1.08}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-card p,body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-card li{font-size:8.05pt;line-height:1.45}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .document-body .plan-rail article{padding:13px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .plan-rail h3{font-size:9.4pt}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .plan-rail p{font-size:7.9pt;line-height:1.42}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .question-list li{margin-bottom:9px;font-size:8.8pt;line-height:1.48}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .source-note{font-size:7.7pt;line-height:1.45}
+
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 1"] .brief-thesis{font-size:27pt;line-height:.96}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 1"] .brief-side{font-size:8pt;line-height:1.46;padding:13px}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 1"] .doc-section{margin-top:16px}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 1"] .proof-cell{padding:10px}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 1"] .brief-card{padding:10px}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 1"] .brief-card p{font-size:7.2pt;line-height:1.4}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .doc-body{padding-top:11px}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .doc-section{margin-top:9px}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .doc-section-title{margin-bottom:5px;padding-bottom:4px;font-size:10pt}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .doc-table{font-size:6.6pt;line-height:1.25}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .doc-table th,body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .doc-table td{padding:4.5px 6px}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .doc-table th{font-size:6.25pt;line-height:1.2}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .brief-grid{gap:4px}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .brief-card{padding:7px}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .brief-card h3{font-size:7.8pt}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .brief-card p{font-size:6.5pt;line-height:1.3}
+body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .doc-summary{font-size:7.25pt;line-height:1.32}
+
+@media print{
+  .resume-body .resume-page{overflow:hidden}
+  body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page,
+  body:has(.document-actions a[href*="90-Day-Plan.pdf"]) .print-page{overflow:hidden}
+}
