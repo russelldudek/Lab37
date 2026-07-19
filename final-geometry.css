@@ -1,0 +1,11 @@
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-section{margin-top:28px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-table{font-size:8.8pt;line-height:1.46}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-table th,
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-table td{padding:11px 12px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .brief-card{padding:15px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .brief-card p{font-size:8.7pt;line-height:1.46}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .plan-rail article{padding:16px;min-height:82px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .plan-rail h3{font-size:10pt}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .plan-rail p{font-size:8.3pt;line-height:1.44}
+.moment-lede h3{font-size:clamp(32px,3.4vw,50px)!important}
+.moment-metrics strong{font-size:clamp(18px,1.35vw,23px)!important;line-height:1.08!important;letter-spacing:-.01em!important}
