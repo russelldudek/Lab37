@@ -19,6 +19,10 @@
 .resume-body .transfer-note{padding:11px 12px;border-left:4px solid var(--signal-lime);background:#f7f7f4}
 .resume-body .transfer-note .doc-section-title{margin-bottom:7px}
 .resume-body .transfer-note p{margin:0;font-size:7.75pt;line-height:1.46}
+.resume-body .resume-page[aria-label="Resume page 1"] .resume-summary{padding:15px 0 16px}
+.resume-body .resume-page[aria-label="Resume page 1"] .doc-section{margin-top:16px}
+.resume-body .resume-page[aria-label="Resume page 1"] .experience{margin-top:12px}
+.resume-body .resume-page[aria-label="Resume page 1"] .experience li{margin:2.2px 0;line-height:1.36}
 
 body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page{padding:.55in .62in .5in}
 body:has(.document-actions a[href*="Interview-Brief.pdf"]) .doc-body{padding-top:18px}
@@ -38,11 +42,23 @@ body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-grid{gap:8px}
 body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-card{padding:12px}
 body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-card h3{font-size:9.3pt;line-height:1.08}
 body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-card p,body:has(.document-actions a[href*="Interview-Brief.pdf"]) .brief-card li{font-size:8.05pt;line-height:1.45}
-body:has(.document-actions a[href*="Interview-Brief.pdf"]) .document-body .plan-rail article{padding:13px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .plan-rail article{padding:13px}
 body:has(.document-actions a[href*="Interview-Brief.pdf"]) .plan-rail h3{font-size:9.4pt}
 body:has(.document-actions a[href*="Interview-Brief.pdf"]) .plan-rail p{font-size:7.9pt;line-height:1.42}
 body:has(.document-actions a[href*="Interview-Brief.pdf"]) .question-list li{margin-bottom:9px;font-size:8.8pt;line-height:1.48}
 body:has(.document-actions a[href*="Interview-Brief.pdf"]) .source-note{font-size:7.7pt;line-height:1.45}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-body{padding-top:21px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-section{margin-top:30px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-section-title{font-size:13pt;margin-bottom:12px;padding-bottom:8px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-table{font-size:9.1pt;line-height:1.5}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-table th,body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-table td{padding:13px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .doc-table th{font-size:8.2pt}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .brief-card{padding:17px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .brief-card h3{font-size:10.2pt}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .brief-card p{font-size:8.9pt;line-height:1.5}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .plan-rail article{padding:18px;min-height:94px}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .plan-rail h3{font-size:10.4pt}
+body:has(.document-actions a[href*="Interview-Brief.pdf"]) .print-page:nth-of-type(2) .plan-rail p{font-size:8.6pt;line-height:1.48}
 
 body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 1"] .brief-thesis{font-size:27pt;line-height:.96}
 body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 1"] .brief-side{font-size:8pt;line-height:1.46;padding:13px}
@@ -61,6 +77,8 @@ body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan 
 body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .brief-card h3{font-size:7.8pt}
 body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .brief-card p{font-size:6.5pt;line-height:1.3}
 body:has(.document-actions a[href*="90-Day-Plan.pdf"]) [aria-label="90-day plan page 3"] .doc-summary{font-size:7.25pt;line-height:1.32}
+
+.moment-metrics strong{font-size:clamp(22px,1.65vw,28px);line-height:1.06;letter-spacing:-.01em}
 
 @media print{
   .resume-body .resume-page{overflow:hidden}
