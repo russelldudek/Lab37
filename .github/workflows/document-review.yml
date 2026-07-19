@@ -10,6 +10,7 @@ on:
       - 90-day-plan.html
       - styles.css
       - document-revision.css
+      - final-geometry.css
       - brand-tokens.css
       - concept-system.css
       - index.html
@@ -25,6 +26,7 @@ on:
       - 90-day-plan.html
       - styles.css
       - document-revision.css
+      - final-geometry.css
       - brand-tokens.css
       - concept-system.css
       - index.html
