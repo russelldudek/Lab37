@@ -97,19 +97,22 @@ jobs:
             echo "$label pages: actual=$actual expected=$expected"
             test "$actual" = "$expected"
           done
-          pdftotext "$RESUME" - | grep -F "Prime Now launch team with Whole Foods"
-          pdftotext "$RESUME" - | grep -F "Food Safety Management certification"
-          pdftotext "$RESUME" - | grep -Fi "How I Would Contribute"
-          pdftotext "$COVER" - | grep -F "product clarity without slowing invention"
-          pdftotext "$COVER" - | grep -F "Prime Now launch team with Whole Foods"
-          pdftotext "$BRIEF" - | grep -F "Invention velocity vs. product continuity"
-          pdftotext "$BRIEF" - | grep -F "first dedicated product manager"
-          pdftotext "$BRIEF" - | grep -F "Food Safety Management certification"
-          pdftotext "$PLAN" - | grep -F "NSF / UL"
-          pdftotext "$PLAN" - | grep -F "market and competitive evidence"
-          for pdf in "$RESUME" "$COVER" "$BRIEF" "$PLAN"; do
-            ! pdftotext "$pdf" - | grep -Ei "roleforge|russelldudek/Lab37|Public repository"
-          done
+          mkdir -p /tmp/lab37-pdf-text
+          pdftotext "$RESUME" - | tr '\n' ' ' | tr -s ' ' > /tmp/lab37-pdf-text/resume.txt
+          pdftotext "$COVER" - | tr '\n' ' ' | tr -s ' ' > /tmp/lab37-pdf-text/cover.txt
+          pdftotext "$BRIEF" - | tr '\n' ' ' | tr -s ' ' > /tmp/lab37-pdf-text/brief.txt
+          pdftotext "$PLAN" - | tr '\n' ' ' | tr -s ' ' > /tmp/lab37-pdf-text/plan.txt
+          grep -F "Prime Now launch team with Whole Foods" /tmp/lab37-pdf-text/resume.txt
+          grep -F "Food Safety Management certification" /tmp/lab37-pdf-text/resume.txt
+          grep -Fi "How I Would Contribute" /tmp/lab37-pdf-text/resume.txt
+          grep -F "product clarity without slowing invention" /tmp/lab37-pdf-text/cover.txt
+          grep -F "Prime Now launch team with Whole Foods" /tmp/lab37-pdf-text/cover.txt
+          grep -F "Invention velocity vs. product continuity" /tmp/lab37-pdf-text/brief.txt
+          grep -F "first dedicated product manager" /tmp/lab37-pdf-text/brief.txt
+          grep -F "Food Safety Management certification" /tmp/lab37-pdf-text/brief.txt
+          grep -F "NSF / UL" /tmp/lab37-pdf-text/plan.txt
+          grep -F "market and competitive evidence" /tmp/lab37-pdf-text/plan.txt
+          ! grep -Ei "roleforge|russelldudek/Lab37|Public repository" /tmp/lab37-pdf-text/*.txt
 
       - name: Commit regenerated PDFs to review branch
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
