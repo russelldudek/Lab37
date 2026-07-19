@@ -1,4 +1,5 @@
 @import url('remote-fallback.css');
+@import url('document-revision.css');
 :root {
   --lab-black: #050505;
   --lab-black-soft: #111111;
