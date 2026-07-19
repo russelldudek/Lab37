@@ -69,30 +69,6 @@ jobs:
       - name: Render PDFs and site review images
         run: node scripts/render-documents.mjs
 
-      - name: Verify page counts and alignment evidence
-        run: |
-          RESUME=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf
-          COVER=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf
-          BRIEF=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf
-          PLAN=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf
-          test "$(pdfinfo "$RESUME" | awk '/^Pages:/ {print $2}')" = "2"
-          test "$(pdfinfo "$COVER" | awk '/^Pages:/ {print $2}')" = "1"
-          test "$(pdfinfo "$BRIEF" | awk '/^Pages:/ {print $2}')" = "4"
-          test "$(pdfinfo "$PLAN" | awk '/^Pages:/ {print $2}')" = "3"
-          pdftotext "$RESUME" - | grep -F "Prime Now launch team with Whole Foods"
-          pdftotext "$RESUME" - | grep -F "Food Safety Management certification"
-          pdftotext "$RESUME" - | grep -Fi "How I Would Contribute"
-          pdftotext "$COVER" - | grep -F "product clarity without slowing invention"
-          pdftotext "$COVER" - | grep -F "Prime Now launch team with Whole Foods"
-          pdftotext "$BRIEF" - | grep -F "Invention velocity vs. product continuity"
-          pdftotext "$BRIEF" - | grep -F "first dedicated product manager"
-          pdftotext "$BRIEF" - | grep -F "Food Safety Management certification"
-          pdftotext "$PLAN" - | grep -F "NSF / UL"
-          pdftotext "$PLAN" - | grep -F "market and competitive evidence"
-          for pdf in "$RESUME" "$COVER" "$BRIEF" "$PLAN"; do
-            ! pdftotext "$pdf" - | grep -Ei "roleforge|russelldudek/Lab37|Public repository"
-          done
-
       - name: Rasterize every PDF page
         run: |
           mkdir -p review-rendered/resume review-rendered/cover review-rendered/brief review-rendered/plan
@@ -108,6 +84,32 @@ jobs:
           path: review-rendered
           if-no-files-found: error
           retention-days: 7
+
+      - name: Verify page counts and alignment evidence
+        run: |
+          RESUME=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf
+          COVER=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Cover-Letter.pdf
+          BRIEF=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Interview-Brief.pdf
+          PLAN=docs/Russell-Dudek-Lab37-Robotics-Product-Manager-90-Day-Plan.pdf
+          for spec in "$RESUME:2:resume" "$COVER:1:cover" "$BRIEF:4:brief" "$PLAN:3:plan"; do
+            file=${spec%%:*}; rest=${spec#*:}; expected=${rest%%:*}; label=${rest##*:}
+            actual=$(pdfinfo "$file" | awk '/^Pages:/ {print $2}')
+            echo "$label pages: actual=$actual expected=$expected"
+            test "$actual" = "$expected"
+          done
+          pdftotext "$RESUME" - | grep -F "Prime Now launch team with Whole Foods"
+          pdftotext "$RESUME" - | grep -F "Food Safety Management certification"
+          pdftotext "$RESUME" - | grep -Fi "How I Would Contribute"
+          pdftotext "$COVER" - | grep -F "product clarity without slowing invention"
+          pdftotext "$COVER" - | grep -F "Prime Now launch team with Whole Foods"
+          pdftotext "$BRIEF" - | grep -F "Invention velocity vs. product continuity"
+          pdftotext "$BRIEF" - | grep -F "first dedicated product manager"
+          pdftotext "$BRIEF" - | grep -F "Food Safety Management certification"
+          pdftotext "$PLAN" - | grep -F "NSF / UL"
+          pdftotext "$PLAN" - | grep -F "market and competitive evidence"
+          for pdf in "$RESUME" "$COVER" "$BRIEF" "$PLAN"; do
+            ! pdftotext "$pdf" - | grep -Ei "roleforge|russelldudek/Lab37|Public repository"
+          done
 
       - name: Commit regenerated PDFs to review branch
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
