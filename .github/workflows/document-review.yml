@@ -9,6 +9,7 @@ on:
       - interview-brief.html
       - 90-day-plan.html
       - styles.css
+      - cody-refinement.css
       - document-revision.css
       - final-geometry.css
       - brand-tokens.css
@@ -19,12 +20,14 @@ on:
   push:
     branches:
       - concept/atoms-food-system-review
+      - refine/cody-copy-layout-2026-07-20
     paths:
       - resume.html
       - cover-letter.html
       - interview-brief.html
       - 90-day-plan.html
       - styles.css
+      - cody-refinement.css
       - document-revision.css
       - final-geometry.css
       - brand-tokens.css
@@ -43,7 +46,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: concept/atoms-food-system-review
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - uses: actions/setup-node@v4
         with:
@@ -107,8 +110,13 @@ jobs:
           grep -F "Prime Now launch team with Whole Foods" /tmp/lab37-pdf-text/resume.txt
           grep -F "Food Safety Management certification" /tmp/lab37-pdf-text/resume.txt
           grep -Fi "How I Would Contribute" /tmp/lab37-pdf-text/resume.txt
+          grep -F "last-mile Uber" /tmp/lab37-pdf-text/resume.txt
+          grep -F "Publications" /tmp/lab37-pdf-text/resume.txt
+          grep -F "scholar.google.com/citations?user=yHQSVd8AAAAJ&hl=en" /tmp/lab37-pdf-text/resume.txt
           grep -F "product clarity without slowing invention" /tmp/lab37-pdf-text/cover.txt
           grep -F "Prime Now launch team with Whole Foods" /tmp/lab37-pdf-text/cover.txt
+          grep -F "unique transferability profile" /tmp/lab37-pdf-text/cover.txt
+          ! grep -F "unusual transferability profile" /tmp/lab37-pdf-text/cover.txt
           grep -F "Invention velocity vs. product continuity" /tmp/lab37-pdf-text/brief.txt
           grep -F "first dedicated product manager" /tmp/lab37-pdf-text/brief.txt
           grep -F "Food Safety Management certification" /tmp/lab37-pdf-text/brief.txt
@@ -129,6 +137,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "PDFs already match the reviewed HTML."
           else
-            git commit -m "Regenerate complete reviewed candidate package"
-            git push origin HEAD:concept/atoms-food-system-review
+            git commit -m "Regenerate refined candidate package"
+            git push origin HEAD:${{ github.ref_name }}
           fi
