@@ -126,6 +126,15 @@ function bindControls() {
   document.querySelectorAll('[data-print]').forEach((button) => button.addEventListener('click', () => window.print()));
 }
 
+function applyHiringTeamCopy() {
+  const operatingPosture = [...document.querySelectorAll('.brief-side')].find(
+    (node) => node.querySelector('strong')?.textContent.trim() === 'Operating posture',
+  );
+  if (!operatingPosture) return;
+
+  operatingPosture.innerHTML = '<strong>Operating posture</strong><br>Begin with direct observation, active listening, and respect for the expertise already within the team. Add value quickly by clarifying decisions, connecting evidence to ownership, and building lightweight product mechanisms that preserve learning as the organization scales.';
+}
+
 function installPresentationLayer() {
   if (!document.querySelector('link[href="desktop-v2.css"]')) {
     const link = document.createElement('link');
@@ -143,6 +152,7 @@ function installPresentationLayer() {
   }
 }
 
+applyHiringTeamCopy();
 installPresentationLayer();
 bindControls();
 setScenario('peak');
