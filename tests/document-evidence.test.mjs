@@ -32,9 +32,10 @@ for (const credential of credentialOrder) {
   previous = index;
 }
 
-const scholarUrl = 'https://scholar.google.com/citations?user=yHQSVd8AAAAJ&hl=en';
+const scholarUrl = 'https://scholar.google.com/citations?user=yHQSVd8AAAAJ&amp;hl=en';
 assert.ok(resume.includes('Publications'), 'Resume needs a Publications heading');
-assert.ok(resume.includes(scholarUrl), 'Resume needs the complete Google Scholar URL');
+assert.ok(resume.includes(`href="${scholarUrl}"`), 'Resume needs a clickable Google Scholar URL');
+assert.ok(resume.includes(`>${scholarUrl.replace('https://', '')}</a>`), 'Resume needs the complete visible Google Scholar URL');
 assert.ok(resume.includes('last-mile Uber'), 'Resume needs the approved Amazon Flex framing');
 assert.ok(resume.includes('Turn ambiguous operating problems into agentic workflows'), 'Resume needs the approved DudeWorth evidence framing');
 assert.ok(cover.includes('unique transferability profile'), 'Cover letter needs the approved transferability wording');
