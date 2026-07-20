@@ -10,6 +10,7 @@ const files = {
 };
 
 const combined = Object.values(files).join('\n');
+const siteText = files.site.replace(/<[^>]+>/g, '');
 
 const requiredCompanyMoment = [
   'LinkedIn-reported July 2026',
@@ -57,6 +58,28 @@ for (const [name, text] of Object.entries({ site: files.site, resume: files.resu
   assert.ok(text.includes('Prime Now'), `${name} must include Prime Now evidence`);
   assert.ok(text.includes('Whole Foods'), `${name} must include Whole Foods evidence`);
   assert.ok(text.includes('Food Safety Management'), `${name} must include Food Safety Management evidence`);
+}
+
+const approvedSiteCopy = [
+  'Each bowl accumulates evidence across food behavior, machine performance, order truth, operator flow, and economics before it advances.',
+  'Make Bowl Builder deployments repeatable across recipes, sites, operators, food-safety controls, and economics.',
+  'What evidence would give a customer confidence to expand from a successful pilot to a multi-site deployment—and where does the PM own that decision?',
+  'Explore the full first 90 days',
+];
+for (const phrase of approvedSiteCopy) {
+  assert.ok(siteText.includes(phrase), `Site missing approved refinement: ${phrase}`);
+}
+assert.match(files.site, /href="90-day-plan\.html"[^>]*>Explore the full first 90 days/);
+assert.equal((files.site.match(/<div class="questions-list">[\s\S]*?<\/div><\/section>/)?.[0].match(/<p>/g) || []).length, 7);
+
+for (const forbidden of [
+  'promising robotic makeline',
+  'Vape-Jet · Direct',
+  'Amazon · Direct',
+  'Compunetics · Direct',
+  'DudeWorth · Direct',
+]) {
+  assert.ok(!files.site.includes(forbidden), `Site retains rejected wording: ${forbidden}`);
 }
 
 assert.ok(files.resume.includes('How I Would Contribute'), 'Resume contribution section must be explicitly future-facing');
