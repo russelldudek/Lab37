@@ -1,0 +1,53 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build public site artifact
+        run: |
+          rm -rf _site
+          mkdir -p _site/docs
+          find . -maxdepth 1 -type f \
+            \( -name '*.html' -o -name '*.css' -o -name '*.js' -o -name '*.json' -o -name '.nojekyll' \) \
+            -exec cp '{}' _site/ \;
+          cp -R assets _site/assets
+          find docs -maxdepth 1 -type f -name '*.pdf' -exec cp '{}' _site/docs/ \;
+          touch _site/.nojekyll
+          test -f _site/index.html
+          test -f _site/resume.html
+          test -f _site/cover-letter.html
+          test -f _site/90-day-plan.html
+          test -f _site/docs/Russell-Dudek-Lab37-Robotics-Product-Manager-Resume.pdf
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
