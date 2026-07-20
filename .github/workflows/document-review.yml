@@ -111,7 +111,7 @@ jobs:
           grep -F "Food Safety Management certification" /tmp/lab37-pdf-text/resume.txt
           grep -Fi "How I Would Contribute" /tmp/lab37-pdf-text/resume.txt
           grep -F "last-mile Uber" /tmp/lab37-pdf-text/resume.txt
-          grep -F "Publications" /tmp/lab37-pdf-text/resume.txt
+          grep -Fi "Publications" /tmp/lab37-pdf-text/resume.txt
           grep -F "scholar.google.com/citations?user=yHQSVd8AAAAJ&hl=en" /tmp/lab37-pdf-text/resume.txt
           grep -F "product clarity without slowing invention" /tmp/lab37-pdf-text/cover.txt
           grep -F "Prime Now launch team with Whole Foods" /tmp/lab37-pdf-text/cover.txt
