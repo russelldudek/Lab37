@@ -8,6 +8,7 @@ on:
       - cover-letter.html
       - interview-brief.html
       - 90-day-plan.html
+      - app.js
       - styles.css
       - cody-refinement.css
       - document-revision.css
@@ -19,6 +20,7 @@ on:
       - .github/workflows/document-review.yml
   push:
     branches:
+      - main
       - concept/atoms-food-system-review
       - refine/cody-copy-layout-2026-07-20
     paths:
@@ -26,6 +28,7 @@ on:
       - cover-letter.html
       - interview-brief.html
       - 90-day-plan.html
+      - app.js
       - styles.css
       - cody-refinement.css
       - document-revision.css
@@ -122,6 +125,8 @@ jobs:
           grep -F "Food Safety Management certification" /tmp/lab37-pdf-text/brief.txt
           grep -F "NSF / UL" /tmp/lab37-pdf-text/plan.txt
           grep -F "market and competitive evidence" /tmp/lab37-pdf-text/plan.txt
+          grep -F "Begin with direct observation, active listening, and respect for the expertise already within the team." /tmp/lab37-pdf-text/plan.txt
+          ! grep -F "Begin with tactical empathy and direct observation." /tmp/lab37-pdf-text/plan.txt
           ! grep -Ei "roleforge|russelldudek/Lab37|Public repository" /tmp/lab37-pdf-text/*.txt
 
       - name: Commit regenerated PDFs to review branch
