@@ -10,6 +10,7 @@ const files = {
 };
 
 const combined = Object.values(files).join('\n');
+const siteText = files.site.replace(/<[^>]+>/g, '');
 
 const requiredCompanyMoment = [
   'LinkedIn-reported July 2026',
@@ -66,7 +67,7 @@ const approvedSiteCopy = [
   'Explore the full first 90 days',
 ];
 for (const phrase of approvedSiteCopy) {
-  assert.ok(files.site.includes(phrase), `Site missing approved refinement: ${phrase}`);
+  assert.ok(siteText.includes(phrase), `Site missing approved refinement: ${phrase}`);
 }
 assert.match(files.site, /href="90-day-plan\.html"[^>]*>Explore the full first 90 days/);
 assert.equal((files.site.match(/<div class="questions-list">[\s\S]*?<\/div><\/section>/)?.[0].match(/<p>/g) || []).length, 7);
