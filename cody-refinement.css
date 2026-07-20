@@ -1,0 +1,2 @@
+.plan-action{max-width:var(--page-max);margin:24px auto 0;display:flex;justify-content:flex-start}
+@media(max-width:800px){.plan-action .action-link{width:100%}}
